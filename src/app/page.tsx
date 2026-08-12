@@ -1,11 +1,14 @@
 import {
   BookOpen,
+  CalendarDays,
   GraduationCap,
   Map,
   MessageCircleQuestion,
   School,
   Users,
 } from "lucide-react";
+import Link from "next/link";
+import { SiteHeader } from "@/components/site-header";
 
 const sections = [
   { title: "Campus", text: "Interactive territory map and key places.", icon: Map },
@@ -16,19 +19,17 @@ const sections = [
   { title: "FAQ", text: "Short answers for common newcomer questions.", icon: MessageCircleQuestion },
 ];
 
+const teacherLinks = [
+  { href: "/teachers", label: "Teacher hub", icon: School },
+  { href: "/teachers/calendar", label: "Academic calendar", icon: CalendarDays },
+  { href: "/teachers/faculty", label: "Teacher photos", icon: Users },
+];
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#f7f4ee] text-[#172119]">
+      <SiteHeader />
       <section className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-5 py-6 sm:px-8 lg:px-10">
-        <nav className="flex items-center justify-between border-b border-black/10 pb-4">
-          <span className="text-sm font-semibold uppercase tracking-[0.18em]">
-            IQanat Guide
-          </span>
-          <span className="rounded-full border border-black/10 px-3 py-1 text-xs font-medium">
-            RU / KZ / EN ready
-          </span>
-        </nav>
-
         <div className="grid flex-1 items-center gap-10 py-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#3f6d4e]">
@@ -41,6 +42,22 @@ export default function Home() {
               A mobile-first guide for newcomers: maps, school life, first-day
               checklist, contacts, tips, and quick navigation in one place.
             </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              {teacherLinks.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <Link
+                    className="inline-flex items-center gap-2 rounded-md border border-black/10 bg-white/70 px-4 py-3 text-sm font-semibold transition hover:bg-white"
+                    href={item.href}
+                    key={item.href}
+                  >
+                    <Icon className="h-4 w-4 text-[#3f6d4e]" />
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </div>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2">
