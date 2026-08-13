@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "IQanat Guide",
-  description: "Interactive newcomer guide for IQanat school.",
+  description: "Stylish interactive guide for the IQanat school community.",
 };
 
 export default function RootLayout({
@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="kk">
       <body>{children}</body>
     </html>
   );
