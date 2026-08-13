@@ -8,6 +8,7 @@ import {
   NotebookTabs,
   School,
 } from "lucide-react";
+import { AcademicYearMap } from "@/components/academic-year-map";
 import { SiteHeader } from "@/components/site-header";
 import { calendarCopy } from "@/lib/calendar-i18n";
 import type { Lang } from "@/lib/i18n";
@@ -31,13 +32,6 @@ const tones = [
   "bg-[#f0f3ff] text-[#172119] border-[#c7d0f2]",
   "bg-[#172119] text-white border-[#172119]",
 ];
-
-const segmentTone = {
-  orientation: "bg-[#c7d8a7] text-[#172119]",
-  term: "bg-white text-[#172119]",
-  break: "bg-[#f1d879] text-[#172119]",
-  summer: "bg-[#9ecab0] text-[#172119]",
-};
 
 export function AcademicCalendarPage({ lang }: { lang: Lang }) {
   const t = calendarCopy[lang];
@@ -83,56 +77,7 @@ export function AcademicCalendarPage({ lang }: { lang: Lang }) {
             <Landmark className="h-7 w-7 shrink-0 text-[#c7d8a7]" />
           </div>
 
-          <div className="overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            <div className="min-w-[980px] space-y-3">
-              <div className="grid grid-cols-[104px_1fr] items-stretch gap-3">
-                <div />
-                <div className="grid grid-cols-[repeat(299,minmax(0,1fr))] overflow-hidden rounded-2xl border border-white/12 text-center text-[11px] font-semibold uppercase tracking-wide text-white/70">
-                  {t.months.map((month) => (
-                    <div
-                      className="border-r border-white/10 px-2 py-3 last:border-r-0"
-                      key={month.label}
-                      style={{ gridColumn: `span ${month.days} / span ${month.days}` }}
-                    >
-                      {month.label}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {t.rows.map((row) => (
-                <div className="grid grid-cols-[104px_1fr] items-center gap-3" key={row.label}>
-                  <div className="text-sm font-semibold text-white/70">{row.label}</div>
-                  <div className="grid h-14 grid-cols-[repeat(299,minmax(0,1fr))] rounded-2xl bg-white/8 p-1">
-                    {row.segments.map((segment) => {
-                      const showLabel = segment.days >= 24;
-
-                      return (
-                        <div
-                          aria-label={`${segment.label}: ${segment.date}. ${segment.details}`}
-                          className={`group relative mx-0.5 flex min-w-0 items-center justify-center rounded-xl text-[11px] font-semibold shadow-sm transition hover:z-20 hover:scale-[1.03] ${segmentTone[segment.tone]}`}
-                          key={`${row.label}-${segment.label}-${segment.date}`}
-                          style={{ gridColumn: `span ${segment.days} / span ${segment.days}` }}
-                          title={`${segment.label}: ${segment.date}. ${segment.details}`}
-                        >
-                          {showLabel ? (
-                            <span className="truncate px-2">{segment.label}</span>
-                          ) : (
-                            <span className="h-2 w-2 rounded-full bg-current/75" />
-                          )}
-                          <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 w-56 -translate-x-1/2 rounded-xl bg-white px-3 py-2 text-left text-xs font-medium leading-5 text-[#172119] opacity-0 shadow-xl ring-1 ring-black/10 transition group-hover:opacity-100">
-                            <strong className="block">{segment.label}</strong>
-                            <span className="block text-[#3f6d4e]">{segment.date}</span>
-                            <span className="block text-[#586158]">{segment.details}</span>
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <AcademicYearMap t={t} />
         </div>
       </section>
 
