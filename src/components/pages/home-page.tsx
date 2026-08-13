@@ -1,9 +1,7 @@
 import {
-  Building2,
   CalendarDays,
   Car,
   CigaretteOff,
-  GraduationCap,
   HeartHandshake,
   Images,
   Map,
@@ -15,13 +13,15 @@ import {
   VolumeX,
   Wrench,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import { CampusMap } from "@/components/campus-map";
 import { SiteHeader } from "@/components/site-header";
+import { campusMapCopy } from "@/lib/campus-map-data";
 import { copy, languagePath, type Lang } from "@/lib/i18n";
 import { teacherHouseCopy } from "@/lib/teacher-house-i18n";
 
 const pageIcons = [CalendarDays, Images];
-const buildings = ["Main School", "Freedom House", "Teachers House", "Students Residence"];
 const ruleIcons = {
   internet: ShieldCheck,
   quiet: VolumeX,
@@ -37,6 +37,7 @@ const ruleIcons = {
 export function HomePage({ lang }: { lang: Lang }) {
   const t = copy[lang].home;
   const housing = teacherHouseCopy[lang];
+  const campus = campusMapCopy[lang];
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#f7f4ee] text-[#172119]">
@@ -94,17 +95,14 @@ export function HomePage({ lang }: { lang: Lang }) {
                     </Link>
                   );
                 })}
-                <div className="rounded-[1.35rem] border border-dashed border-black/20 bg-[#eef1e6] p-4">
+                <Link
+                  className="group rounded-[1.35rem] border border-black/10 bg-[#eef1e6] p-4 transition hover:-translate-y-0.5 hover:bg-white hover:shadow-lg"
+                  href={languagePath(lang, "/map")}
+                >
                   <Map className="h-5 w-5 text-[#3f6d4e]" />
-                  <h3 className="mt-5 text-base font-semibold">Campus map</h3>
-                  <p className="mt-2 text-xs leading-5 text-[#586158]">
-                    {lang === "ru"
-                      ? "Дальше: кликабельные здания и навигация по этажам."
-                      : lang === "en"
-                        ? "Next: clickable buildings and floor-level navigation."
-                        : "Келесі: кликабельді ғимараттар және қабат бойынша навигация."}
-                  </p>
-                </div>
+                  <h3 className="mt-5 text-base font-semibold">{campus.navTitle}</h3>
+                  <p className="mt-2 text-xs leading-5 text-[#586158]">{campus.intro}</p>
+                </Link>
               </div>
             </div>
           </div>
@@ -115,9 +113,11 @@ export function HomePage({ lang }: { lang: Lang }) {
         <div className="mx-auto grid w-full max-w-6xl gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/8 shadow-[0_24px_80px_rgba(23,33,25,0.22)]">
             <div className="relative aspect-[16/10] min-h-72">
-              <img
+              <Image
                 alt={housing.photoLabel}
-                className="h-full w-full object-cover"
+                className="object-cover"
+                fill
+                sizes="(max-width: 1024px) 100vw, 560px"
                 src="/teachers-house-guide.jpg"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#172119]/72 via-[#172119]/8 to-transparent" />
@@ -205,19 +205,13 @@ export function HomePage({ lang }: { lang: Lang }) {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-5 py-12 sm:px-8 lg:px-10" id="campus">
-        <div className="rounded-[2rem] border border-black/10 bg-[#172119] p-6 text-white sm:p-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c7d8a7]">{t.mapIdea}</p>
-          <h2 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight">{t.mapTitle}</h2>
-          <div className="mt-6 grid gap-3 md:grid-cols-4">
-            {buildings.map((building) => (
-              <div className="rounded-xl border border-white/10 bg-white/8 p-4" key={building}>
-                <Building2 className="h-5 w-5 text-[#c7d8a7]" />
-                <p className="mt-4 text-sm font-semibold">{building}</p>
-              </div>
-            ))}
-          </div>
+      <section className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8" id="campus">
+        <p className="text-sm font-semibold uppercase text-[#3f6d4e]">{campus.eyebrow}</p>
+        <div className="mt-4 grid gap-4 lg:grid-cols-[1fr_0.55fr] lg:items-end">
+          <h2 className="max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl">{campus.title}</h2>
+          <p className="max-w-xl text-base leading-7 text-[#586158]">{campus.intro}</p>
         </div>
+        <CampusMap lang={lang} />
       </section>
     </main>
   );

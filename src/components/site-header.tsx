@@ -21,7 +21,7 @@ export function SiteHeader({ lang, path = "/" }: { lang: Lang; path?: string }) 
     { href: languagePath(lang, "/teachers/calendar"), label: t.calendar, icon: CalendarDays },
     { href: languagePath(lang, "/teachers/faculty"), label: t.faculty, icon: Images },
     { href: `${languagePath(lang)}#sections`, label: housingLabels[lang], icon: Home },
-    { href: `${languagePath(lang)}#campus`, label: t.map, icon: Map },
+    { href: languagePath(lang, "/map"), label: t.map, icon: Map },
   ];
 
   return (
