@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { buildings, campusMapCopy, type Building } from "@/lib/campus-map-data";
-import { buildingGeometry } from "@/lib/campus-map-geometry";
+import { buildingGeometry, campusMapSize } from "@/lib/campus-map-geometry";
 import { languagePath, type Lang } from "@/lib/i18n";
 
 function BuildingCard({ building, lang }: { building: Building; lang: Lang }) {
@@ -42,7 +42,7 @@ export function CampusMap({ lang }: { lang: Lang }) {
     router.push(languagePath(lang, `/map/${building.slug}`));
   }
 
-  function handleBuildingClick(event: React.MouseEvent<SVGPolygonElement>, building: Building) {
+  function handleBuildingClick(event: React.MouseEvent<SVGPathElement>, building: Building) {
     if (pointerType.current === "touch" && selectedId !== building.id) {
       event.preventDefault();
       setSelectedId(building.id);
@@ -60,11 +60,13 @@ export function CampusMap({ lang }: { lang: Lang }) {
       >
         <Image
           alt={t.imageAlt}
-          className="object-contain"
-          fill
+          className="block h-auto w-full select-none"
+          draggable={false}
+          height={campusMapSize.height}
           priority
           sizes="(max-width: 1280px) 100vw, 1280px"
           src="/campus-map-clean.png"
+          width={campusMapSize.width}
         />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/35 to-transparent" />
 
@@ -83,7 +85,8 @@ export function CampusMap({ lang }: { lang: Lang }) {
           className="absolute inset-0 h-full w-full"
           preserveAspectRatio="xMidYMid meet"
           role="group"
-          viewBox="0 0 1672 941"
+          shapeRendering="geometricPrecision"
+          viewBox={`0 0 ${campusMapSize.width} ${campusMapSize.height}`}
         >
           {buildingGeometry.map((geometry) => {
             const building = buildings.find((item) => item.id === geometry.id);
@@ -96,10 +99,13 @@ export function CampusMap({ lang }: { lang: Lang }) {
 
             return (
               <g key={building.id}>
-                <polygon
+                <path
                   aria-label={`${content.name}. ${content.type}`}
                   className="cursor-pointer transition-[fill,stroke,filter] duration-200 focus:outline-none"
+                  clipRule={geometry.fillRule ?? "nonzero"}
+                  d={geometry.path}
                   fill={isActive ? "rgba(199,216,167,0.35)" : "rgba(255,255,255,0.001)"}
+                  fillRule={geometry.fillRule ?? "nonzero"}
                   onClick={(event) => handleBuildingClick(event, building)}
                   onFocus={() => setHoveredId(building.id)}
                   onKeyDown={(event) => {
@@ -112,10 +118,10 @@ export function CampusMap({ lang }: { lang: Lang }) {
                   onPointerDown={(event) => {
                     pointerType.current = event.pointerType;
                   }}
-                  points={geometry.points}
                   role="link"
                   stroke={isActive ? "rgba(247,244,238,0.95)" : "transparent"}
-                  strokeWidth={isActive ? 5 : 0}
+                  strokeLinejoin="round"
+                  strokeWidth={isActive ? 3 : 0}
                   style={{ filter: isActive ? "drop-shadow(0 8px 14px rgba(0,0,0,0.3))" : "none" }}
                   tabIndex={0}
                   vectorEffect="non-scaling-stroke"
