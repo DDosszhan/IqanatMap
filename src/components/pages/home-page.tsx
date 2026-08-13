@@ -1,5 +1,4 @@
 import {
-  ArrowUpRight,
   Building2,
   CalendarDays,
   Car,
@@ -21,7 +20,7 @@ import { SiteHeader } from "@/components/site-header";
 import { copy, languagePath, type Lang } from "@/lib/i18n";
 import { teacherHouseCopy } from "@/lib/teacher-house-i18n";
 
-const pageIcons = [Users, CalendarDays, Images];
+const pageIcons = [CalendarDays, Images];
 const buildings = ["Main School", "Freedom House", "Teachers House", "Students Residence"];
 const ruleIcons = {
   internet: ShieldCheck,
@@ -57,13 +56,6 @@ export function HomePage({ lang }: { lang: Lang }) {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                className="inline-flex items-center gap-2 rounded-full bg-[#172119] px-5 py-3 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(23,33,25,0.18)] transition hover:bg-[#26372b]"
-                href={languagePath(lang, "/teachers")}
-              >
-                {t.primary}
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
-              <Link
                 className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-5 py-3 text-sm font-semibold backdrop-blur transition hover:bg-white"
                 href="#sections"
               >
@@ -86,7 +78,7 @@ export function HomePage({ lang }: { lang: Lang }) {
                 </p>
               </div>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                {t.pages.map(([href, title, text], index) => {
+                {t.pages.filter(([href]) => href !== "/teachers").map(([href, title, text], index) => {
                   const Icon = pageIcons[index];
 
                   return (

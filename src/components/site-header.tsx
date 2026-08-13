@@ -5,7 +5,6 @@ import {
   Home,
   Images,
   Map,
-  UsersRound,
 } from "lucide-react";
 import { copy, languagePath, languages, type Lang } from "@/lib/i18n";
 
@@ -19,7 +18,6 @@ export function SiteHeader({ lang, path = "/" }: { lang: Lang; path?: string }) 
   const t = copy[lang].nav;
   const navItems = [
     { href: languagePath(lang), label: t.home, icon: GraduationCap },
-    { href: languagePath(lang, "/teachers"), label: t.teachers, icon: UsersRound },
     { href: languagePath(lang, "/teachers/calendar"), label: t.calendar, icon: CalendarDays },
     { href: languagePath(lang, "/teachers/faculty"), label: t.faculty, icon: Images },
     { href: `${languagePath(lang)}#sections`, label: housingLabels[lang], icon: Home },
