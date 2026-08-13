@@ -65,7 +65,7 @@ function PierCard({ lang }: { lang: Lang }) {
   );
 }
 
-export function CampusMap({ lang }: { lang: Lang }) {
+export function CampusMap({ lang, preload = false }: { lang: Lang; preload?: boolean }) {
   const router = useRouter();
   const t = campusMapCopy[lang];
   const [hoveredId, setHoveredId] = useState<string | null>(null);
@@ -124,9 +124,9 @@ export function CampusMap({ lang }: { lang: Lang }) {
           className="block h-auto w-full select-none"
           draggable={false}
           height={campusMapSize.height}
-          priority
+          priority={preload}
           sizes="(max-width: 1280px) 100vw, 1280px"
-          src="/campus-map-clean.png"
+          src="/campus-map-clean.webp"
           width={campusMapSize.width}
         />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/35 to-transparent" />

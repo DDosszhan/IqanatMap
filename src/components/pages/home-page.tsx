@@ -80,7 +80,7 @@ export function HomePage({ lang }: { lang: Lang }) {
                 </p>
               </div>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                {t.pages.filter(([href]) => href !== "/teachers").map(([href, title, text], index) => {
+                {t.pages.map(([href, title, text], index) => {
                   const Icon = pageIcons[index];
 
                   return (

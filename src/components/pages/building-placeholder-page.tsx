@@ -19,7 +19,7 @@ export function BuildingPlaceholderPage({ building, lang }: { building: Building
           fill
           priority
           sizes="100vw"
-          src="/campus-map-clean.png"
+          src="/campus-map-clean.webp"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#172119] via-[#172119]/60 to-[#172119]/15" />
         <div className="relative z-10 max-w-4xl">

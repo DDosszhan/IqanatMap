@@ -15,7 +15,7 @@ export function CampusMapPage({ lang }: { lang: Lang }) {
           <h1 className="max-w-4xl text-4xl font-semibold leading-tight sm:text-6xl">{t.title}</h1>
           <p className="max-w-xl text-base leading-7 text-[#586158] lg:pb-1">{t.intro}</p>
         </div>
-        <CampusMap lang={lang} />
+        <CampusMap lang={lang} preload />
       </section>
     </main>
   );
