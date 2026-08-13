@@ -161,8 +161,8 @@ export function HomePage({ lang }: { lang: Lang }) {
             </div>
           </div>
 
-          <div className="grid items-start gap-4 lg:grid-cols-[0.9fr_1.1fr]">
-            <article className="self-start rounded-2xl border border-[#c7d8a7]/25 bg-[#f7f4ee] p-5 text-[#172119] shadow-[0_18px_50px_rgba(0,0,0,0.14)]">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            <article className="rounded-2xl border border-[#c7d8a7]/25 bg-[#f7f4ee] p-5 text-[#172119] shadow-[0_18px_50px_rgba(0,0,0,0.14)] md:col-span-2 xl:col-span-1">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#172119] text-[#c7d8a7]">
                   <ReceiptText className="h-5 w-5" />
@@ -180,29 +180,31 @@ export function HomePage({ lang }: { lang: Lang }) {
               <p className="mt-4 text-sm leading-6 text-[#586158]">{housing.costsNote}</p>
             </article>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              {housing.rules.map((rule) => {
-                const Icon = ruleIcons[rule.key as keyof typeof ruleIcons] ?? ShieldCheck;
+            {housing.rules.map((rule) => {
+              const Icon = ruleIcons[rule.key as keyof typeof ruleIcons] ?? ShieldCheck;
 
-                return (
-                  <article className="rounded-2xl border border-white/10 bg-white/8 p-5" key={rule.key}>
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#c7d8a7]/14 text-[#c7d8a7]">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <h4 className="mt-4 text-lg font-semibold">{rule.title}</h4>
-                    <p className="mt-2 text-sm leading-6 text-white/68">{rule.text}</p>
-                  </article>
-                );
-              })}
-            </div>
-          </div>
+              return (
+                <article className="rounded-2xl border border-white/10 bg-white/8 p-5" key={rule.key}>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#c7d8a7]/14 text-[#c7d8a7]">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h4 className="mt-4 text-lg font-semibold">{rule.title}</h4>
+                  <p className="mt-2 text-sm leading-6 text-white/68">{rule.text}</p>
+                </article>
+              );
+            })}
 
-          <div className="mt-4 rounded-2xl border border-[#c7d8a7]/25 bg-[#c7d8a7]/12 p-5">
-            <p className="text-lg font-semibold text-[#f7f4ee]">{housing.mainRuleTitle}</p>
-            <p className="mt-2 max-w-4xl text-sm leading-6 text-white/72">{housing.mainRuleText}</p>
+            <article className="rounded-2xl border border-[#c7d8a7]/25 bg-[#c7d8a7]/12 p-5 md:col-span-2 xl:col-span-3">
+              <div className="flex items-center gap-3 text-[#f7f4ee]">
+                <HeartHandshake className="h-5 w-5 text-[#c7d8a7]" />
+                <p className="text-lg font-semibold">{housing.mainRuleTitle}</p>
+              </div>
+              <p className="mt-2 max-w-4xl text-sm leading-6 text-white/72">{housing.mainRuleText}</p>
+            </article>
           </div>
         </div>
       </section>
+
       <section className="mx-auto w-full max-w-6xl px-5 py-12 sm:px-8 lg:px-10" id="campus">
         <div className="rounded-[2rem] border border-black/10 bg-[#172119] p-6 text-white sm:p-8">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c7d8a7]">{t.mapIdea}</p>
