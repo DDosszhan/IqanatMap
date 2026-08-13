@@ -3,7 +3,6 @@ import {
   CalendarClock,
   CheckCircle2,
   CircleDot,
-  ClipboardList,
   GraduationCap,
   Landmark,
   NotebookTabs,
@@ -70,12 +69,6 @@ export function AcademicCalendarPage({ lang }: { lang: Lang }) {
             </article>
           );
         })}
-      </section>
-      <section className="border-y border-black/10 bg-white/55">
-        <div className="mx-auto grid w-full max-w-6xl gap-6 px-5 py-10 sm:px-8 lg:grid-cols-[0.75fr_1.25fr] lg:px-10">
-          <div><p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#3f6d4e]">{t.forTeachers}</p><h2 className="mt-3 text-4xl font-semibold leading-tight">{t.helps}</h2></div>
-          <div className="grid gap-3 sm:grid-cols-2">{t.needs.map((need) => <div className="rounded-xl border border-black/10 bg-[#fdfbf7] p-5" key={need}><ClipboardList className="h-5 w-5 text-[#3f6d4e]" /><p className="mt-4 text-sm leading-6 text-[#586158]">{need}</p></div>)}</div>
-        </div>
       </section>
       <section className="mx-auto w-full max-w-6xl px-5 py-10 sm:px-8 lg:px-10"><div className="flex gap-4 rounded-[1.5rem] border border-[#ead48f] bg-[#fff7df] p-5 text-[#172119]"><AlertTriangle className="mt-1 h-5 w-5 shrink-0 text-[#8a6a13]" /><div><h2 className="text-lg font-semibold">{t.change}</h2><p className="mt-2 text-sm leading-6 text-[#5d553f]">{t.changeText}</p></div></div></section>
     </main>
