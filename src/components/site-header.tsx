@@ -2,24 +2,28 @@ import Link from "next/link";
 import {
   CalendarDays,
   GraduationCap,
+  Home,
   Images,
-  LayoutGrid,
   Map,
   UsersRound,
 } from "lucide-react";
 import { copy, languagePath, languages, type Lang } from "@/lib/i18n";
 
-const navIcons = [GraduationCap, UsersRound, CalendarDays, Images, LayoutGrid, Map];
+const housingLabels: Record<Lang, string> = {
+  kk: "Мұғалімдер үйі",
+  ru: "Дом учителей",
+  en: "Teachers House",
+};
 
 export function SiteHeader({ lang, path = "/" }: { lang: Lang; path?: string }) {
   const t = copy[lang].nav;
   const navItems = [
-    { href: languagePath(lang), label: t.home },
-    { href: languagePath(lang, "/teachers"), label: t.teachers },
-    { href: languagePath(lang, "/teachers/calendar"), label: t.calendar },
-    { href: languagePath(lang, "/teachers/faculty"), label: t.faculty },
-    { href: `${languagePath(lang)}#sections`, label: t.sections },
-    { href: `${languagePath(lang)}#campus`, label: t.map },
+    { href: languagePath(lang), label: t.home, icon: GraduationCap },
+    { href: languagePath(lang, "/teachers"), label: t.teachers, icon: UsersRound },
+    { href: languagePath(lang, "/teachers/calendar"), label: t.calendar, icon: CalendarDays },
+    { href: languagePath(lang, "/teachers/faculty"), label: t.faculty, icon: Images },
+    { href: `${languagePath(lang)}#sections`, label: housingLabels[lang], icon: Home },
+    { href: `${languagePath(lang)}#campus`, label: t.map, icon: Map },
   ];
 
   return (
@@ -36,8 +40,8 @@ export function SiteHeader({ lang, path = "/" }: { lang: Lang; path?: string }) 
         </Link>
 
         <nav className="flex min-w-0 flex-1 items-center justify-center gap-1 overflow-x-auto px-1 text-sm font-medium text-[#465047]">
-          {navItems.map((item, index) => {
-            const Icon = navIcons[index];
+          {navItems.map((item) => {
+            const Icon = item.icon;
 
             return (
               <Link
