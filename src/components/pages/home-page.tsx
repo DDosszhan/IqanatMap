@@ -1,88 +1,46 @@
 import {
   ArrowUpRight,
-  BedDouble,
-  BookOpen,
   Building2,
   CalendarDays,
+  Car,
+  CigaretteOff,
   Coffee,
   GraduationCap,
-  Home,
+  HeartHandshake,
   Images,
   KeyRound,
   Map,
-  MessageCircleQuestion,
   Moon,
+  PawPrint,
+  ReceiptText,
   ShieldCheck,
   Sparkles,
   Users,
+  VolumeX,
   Wifi,
+  Wrench,
 } from "lucide-react";
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { copy, languagePath, type Lang } from "@/lib/i18n";
+import { teacherHouseCopy } from "@/lib/teacher-house-i18n";
 
 const pageIcons = [Users, CalendarDays, Images];
 const buildings = ["Main School", "Freedom House", "Teachers House", "Students Residence"];
-
-const housingGuide = {
-  kk: {
-    jump: "Мұғалімдер үйі",
-    eyebrow: "Мұғалімдер үйі бойынша нұсқаулық",
-    title: "Мұғалімдер үйі: тыныш жұмыс пен демалыс кеңістігі",
-    intro:
-      "Кампус ішіндегі мұғалімдерге арналған үй. Бұл бөлімде орналасу, күнделікті тәртіп, тыныш уақыт, ортақ кеңістіктер және кімге жүгіну керегі жинақталады.",
-    photoLabel: "Teachers House",
-    photoText: "Мұғалімдерге арналған тұрғын және жұмыс кеңістігі",
-    cards: [
-      ["Орналасу", "Кілт, бөлме, сақтау орны және алғашқы қабылдау тәртібі."],
-      ["Тыныш уақыт", "Демалыс пен дайындыққа кедергі келтірмейтін ортақ ережелер."],
-      ["Ортақ аймақтар", "Асүй, демалыс аймағы, кір жуатын орын және жұмыс бұрыштары."],
-      ["Көмек керек болса", "Тұрмыстық сұрақтар, жөндеу, қауіпсіздік және кезекшілік байланыстары."],
-    ],
-    checklistTitle: "Жылдам тізім",
-    checklist: ["Wi-Fi және кіру рұқсатын алу", "Бөлме мен кілтті қабылдау", "Тыныш уақыт ережесін білу", "Ортақ кеңістіктерді таза қалдыру"],
-  },
-  ru: {
-    jump: "Дом учителей",
-    eyebrow: "Гайд по Teachers House",
-    title: "Дом учителей: пространство для спокойной работы и отдыха",
-    intro:
-      "Жилое и рабочее пространство для учителей внутри кампуса. Здесь будут правила заселения, тихие часы, общие зоны, бытовые вопросы и контакты, к кому обращаться.",
-    photoLabel: "Teachers House",
-    photoText: "Жилое и рабочее пространство для учителей",
-    cards: [
-      ["Заселение", "Ключ, комната, место хранения и понятный порядок первого заселения."],
-      ["Тихие часы", "Правила, чтобы дом оставался местом отдыха и подготовки к урокам."],
-      ["Общие зоны", "Кухня, зона отдыха, прачечная и рабочие уголки для подготовки."],
-      ["Если нужна помощь", "Бытовые вопросы, ремонт, безопасность и контакты дежурных."],
-    ],
-    checklistTitle: "Быстрый список",
-    checklist: ["Получить Wi-Fi и доступ", "Принять комнату и ключ", "Запомнить тихие часы", "Оставлять общие зоны чистыми"],
-  },
-  en: {
-    jump: "Teachers House",
-    eyebrow: "Мұғалімдер үйі бойынша нұсқаулық",
-    title: "Teachers House: a calm space for work and rest",
-    intro:
-      "A residential and work space for teachers on campus. This guide will collect move-in steps, quiet hours, shared areas, everyday support, and key contacts.",
-    photoLabel: "Teachers House",
-    photoText: "Residential and work space for teachers",
-    cards: [
-      ["Move-in", "Key, room, storage, and a clear first check-in flow."],
-      ["Quiet hours", "Shared rules that protect rest and lesson preparation."],
-      ["Shared areas", "Kitchen, lounge, laundry, and focused work corners."],
-      ["Need help", "Household questions, repairs, safety, and duty contacts."],
-    ],
-    checklistTitle: "Quick checklist",
-    checklist: ["Get Wi-Fi and access", "Receive room and key", "Remember quiet hours", "Keep shared areas clean"],
-  },
-} as const;
-
 const guideIcons = [KeyRound, Moon, Coffee, ShieldCheck];
+const ruleIcons = {
+  quiet: VolumeX,
+  clean: Sparkles,
+  smoking: CigaretteOff,
+  guests: Users,
+  pets: PawPrint,
+  parking: Car,
+  repairs: Wrench,
+} as const;
 
 export function HomePage({ lang }: { lang: Lang }) {
   const t = copy[lang].home;
-  const housing = housingGuide[lang];
+  const housing = teacherHouseCopy[lang];
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#f7f4ee] text-[#172119]">
@@ -151,7 +109,11 @@ export function HomePage({ lang }: { lang: Lang }) {
                   <Map className="h-5 w-5 text-[#3f6d4e]" />
                   <h3 className="mt-5 text-base font-semibold">Campus map</h3>
                   <p className="mt-2 text-xs leading-5 text-[#586158]">
-                    {lang === "ru" ? "Дальше: кликабельные здания и навигация по этажам." : lang === "en" ? "Next: clickable buildings and floor-level navigation." : "Келесі: clickable buildings және қабат бойынша navigation."}
+                    {lang === "ru"
+                      ? "Дальше: кликабельные здания и навигация по этажам."
+                      : lang === "en"
+                        ? "Next: clickable buildings and floor-level navigation."
+                        : "Келесі: кликабельді ғимараттар және қабат бойынша навигация."}
                   </p>
                 </div>
               </div>
@@ -169,7 +131,7 @@ export function HomePage({ lang }: { lang: Lang }) {
                 className="h-full w-full object-cover"
                 src="/teachers-house-guide.jpg"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#172119]/70 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#172119]/72 via-[#172119]/8 to-transparent" />
               <div className="absolute bottom-5 left-5 right-5">
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c7d8a7]">
                   {housing.photoLabel}
@@ -214,12 +176,70 @@ export function HomePage({ lang }: { lang: Lang }) {
               <div className="grid gap-2 sm:grid-cols-2">
                 {housing.checklist.map((item) => (
                   <div className="flex items-center gap-2 text-sm text-white/76" key={item}>
-                    <Wifi className="h-4 w-4 text-[#c7d8a7]" />
-                    {item}
+                    <Wifi className="h-4 w-4 shrink-0 text-[#c7d8a7]" />
+                    <span>{item}</span>
                   </div>
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className="mx-auto mt-10 w-full max-w-6xl">
+          <div className="mb-5 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c7d8a7]">
+                {housing.rulesEyebrow}
+              </p>
+              <h3 className="mt-3 max-w-3xl text-3xl font-semibold leading-tight sm:text-4xl">
+                {housing.rulesTitle}
+              </h3>
+            </div>
+            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-[#c7d8a7]/30 bg-white/8 px-4 py-2 text-sm font-semibold text-[#dfe8c7]">
+              <HeartHandshake className="h-4 w-4" />
+              {housing.mainRuleTitle}
+            </div>
+          </div>
+
+          <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
+            <article className="rounded-2xl border border-[#c7d8a7]/25 bg-[#f7f4ee] p-5 text-[#172119] shadow-[0_18px_50px_rgba(0,0,0,0.14)]">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#172119] text-[#c7d8a7]">
+                  <ReceiptText className="h-5 w-5" />
+                </div>
+                <h4 className="text-xl font-semibold">{housing.costsTitle}</h4>
+              </div>
+              <div className="mt-5 divide-y divide-black/10 rounded-xl border border-black/10 bg-white/70">
+                {housing.costs.map(([label, price]) => (
+                  <div className="flex items-center justify-between gap-4 px-4 py-3" key={label}>
+                    <span className="text-sm font-medium text-[#465047]">{label}</span>
+                    <span className="whitespace-nowrap text-lg font-semibold">{price}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-4 text-sm leading-6 text-[#586158]">{housing.costsNote}</p>
+            </article>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {housing.rules.map((rule) => {
+                const Icon = ruleIcons[rule.key as keyof typeof ruleIcons] ?? ShieldCheck;
+
+                return (
+                  <article className="rounded-2xl border border-white/10 bg-white/8 p-5" key={rule.key}>
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#c7d8a7]/14 text-[#c7d8a7]">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h4 className="mt-4 text-lg font-semibold">{rule.title}</h4>
+                    <p className="mt-2 text-sm leading-6 text-white/68">{rule.text}</p>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="mt-4 rounded-2xl border border-[#c7d8a7]/25 bg-[#c7d8a7]/12 p-5">
+            <p className="text-lg font-semibold text-[#f7f4ee]">{housing.mainRuleTitle}</p>
+            <p className="mt-2 max-w-4xl text-sm leading-6 text-white/72">{housing.mainRuleText}</p>
           </div>
         </div>
       </section>
