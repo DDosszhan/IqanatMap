@@ -6,8 +6,29 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { buildings, campusMapCopy, type Building } from "@/lib/campus-map-data";
-import { buildingGeometry, campusMapSize } from "@/lib/campus-map-geometry";
+import { buildingGeometry, campusMapSize, pierGeometry } from "@/lib/campus-map-geometry";
 import { languagePath, type Lang } from "@/lib/i18n";
+
+const pierCopy: Record<Lang, { name: string; type: string; description: string; quote: string }> = {
+  kk: {
+    name: "Пирс",
+    type: "Көл жағасындағы орын",
+    description: "Судың жанындағы тыныштыққа тоқтап, табиғатты сезінуге арналған орын.",
+    quote: "Табиғаттың сұлулығы жанды тыныштандырып, күш беретін шипалы мекен.",
+  },
+  ru: {
+    name: "Пирс",
+    type: "Место у озера",
+    description: "Тихое место у воды, где можно остановиться и почувствовать природу.",
+    quote: "Здесь красота природы возвращает тишину внутри и помогает восстановить силы.",
+  },
+  en: {
+    name: "Pier",
+    type: "By the lake",
+    description: "A quiet place by the water to pause and reconnect with nature.",
+    quote: "A healing place where the beauty of nature quiets the mind and restores your strength.",
+  },
+};
 
 function BuildingCard({ building, lang }: { building: Building; lang: Lang }) {
   const t = campusMapCopy[lang];
@@ -29,20 +50,57 @@ function BuildingCard({ building, lang }: { building: Building; lang: Lang }) {
   );
 }
 
+function PierCard({ lang }: { lang: Lang }) {
+  const content = pierCopy[lang];
+
+  return (
+    <div className="rounded-lg border border-white/45 bg-[#fdfbf7]/95 p-4 text-[#172119] shadow-[0_18px_55px_rgba(0,0,0,0.24)] backdrop-blur-xl">
+      <p className="text-xs font-semibold uppercase text-[#3f6d4e]">{content.type}</p>
+      <h3 className="mt-1 text-xl font-semibold">{content.name}</h3>
+      <p className="mt-2 text-sm leading-6 text-[#586158]">{content.description}</p>
+      <blockquote className="mt-4 border-l-2 border-[#9bb27b] pl-3 text-sm italic leading-6 text-[#31523b]">
+        “{content.quote}”
+      </blockquote>
+    </div>
+  );
+}
+
 export function CampusMap({ lang }: { lang: Lang }) {
   const router = useRouter();
   const t = campusMapCopy[lang];
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [hoveredPier, setHoveredPier] = useState(false);
+  const [selectedPier, setSelectedPier] = useState(false);
   const pointerType = useRef<string | null>(null);
-  const activeId = hoveredId ?? selectedId;
+  const activePier = hoveredPier || selectedPier;
+  const activeId = activePier ? null : hoveredId ?? selectedId;
   const activeBuilding = buildings.find((building) => building.id === activeId) ?? null;
 
+  function focusBuilding(buildingId: string) {
+    setSelectedPier(false);
+    setHoveredPier(false);
+    setHoveredId(buildingId);
+  }
+
+  function selectBuilding(buildingId: string) {
+    setSelectedPier(false);
+    setSelectedId(buildingId);
+  }
+
+  function selectPier() {
+    setSelectedPier(true);
+    setSelectedId(null);
+    setHoveredId(null);
+  }
+
   function openBuilding(building: Building) {
+    setSelectedPier(false);
     router.push(languagePath(lang, `/map/${building.slug}`));
   }
 
   function handleBuildingClick(event: React.MouseEvent<SVGPathElement>, building: Building) {
+    setSelectedPier(false);
     if (pointerType.current === "touch" && selectedId !== building.id) {
       event.preventDefault();
       setSelectedId(building.id);
@@ -56,7 +114,10 @@ export function CampusMap({ lang }: { lang: Lang }) {
     <div className="mt-7">
       <div
         className="relative aspect-[1672/941] w-full overflow-hidden rounded-lg bg-[#172119] shadow-[0_28px_80px_rgba(23,33,25,0.2)]"
-        onMouseLeave={() => setHoveredId(null)}
+        onMouseLeave={() => {
+          setHoveredId(null);
+          setHoveredPier(false);
+        }}
       >
         <Image
           alt={t.imageAlt}
@@ -107,14 +168,14 @@ export function CampusMap({ lang }: { lang: Lang }) {
                   fill={isActive ? "rgba(199,216,167,0.35)" : "rgba(255,255,255,0.001)"}
                   fillRule={geometry.fillRule ?? "nonzero"}
                   onClick={(event) => handleBuildingClick(event, building)}
-                  onFocus={() => setHoveredId(building.id)}
+                  onFocus={() => focusBuilding(building.id)}
                   onKeyDown={(event) => {
                     if (event.key === "Enter" || event.key === " ") {
                       event.preventDefault();
                       openBuilding(building);
                     }
                   }}
-                  onMouseEnter={() => setHoveredId(building.id)}
+                  onMouseEnter={() => focusBuilding(building.id)}
                   onPointerDown={(event) => {
                     pointerType.current = event.pointerType;
                   }}
@@ -151,17 +212,52 @@ export function CampusMap({ lang }: { lang: Lang }) {
               </g>
             );
           })}
+
+          <path
+            aria-label={pierCopy[lang].name}
+            aria-pressed={activePier}
+            className="cursor-pointer transition-[fill,stroke,filter] duration-200 focus:outline-none"
+            d={pierGeometry.path}
+            fill={activePier ? "rgba(199,216,167,0.38)" : "rgba(255,255,255,0.001)"}
+            onBlur={() => setHoveredPier(false)}
+            onClick={selectPier}
+            onFocus={() => {
+              setHoveredPier(true);
+              setHoveredId(null);
+            }}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                selectPier();
+              }
+            }}
+            onMouseEnter={() => {
+              setHoveredPier(true);
+              setHoveredId(null);
+            }}
+            onMouseLeave={() => setHoveredPier(false)}
+            role="button"
+            stroke={activePier ? "rgba(247,244,238,0.95)" : "transparent"}
+            strokeLinejoin="round"
+            strokeWidth={activePier ? 3 : 0}
+            style={{ filter: activePier ? "drop-shadow(0 8px 14px rgba(0,0,0,0.3))" : "none" }}
+            tabIndex={0}
+            transform={pierGeometry.transform}
+            vectorEffect="non-scaling-stroke"
+          />
         </svg>
 
-        {activeBuilding ? (
+        {activePier || activeBuilding ? (
           <div aria-live="polite" className="absolute bottom-4 left-4 z-20 hidden w-[min(23rem,calc(100%-2rem))] md:block">
-            <BuildingCard building={activeBuilding} lang={lang} />
+            {activePier ? <PierCard lang={lang} /> : activeBuilding ? <BuildingCard building={activeBuilding} lang={lang} /> : null}
           </div>
         ) : null}
       </div>
 
       <div className="mt-3 md:hidden" aria-live="polite">
-        {activeBuilding ? (
+        {activePier ? (
+          <PierCard lang={lang} />
+        ) : activeBuilding ? (
           <BuildingCard building={activeBuilding} lang={lang} />
         ) : (
           <p className="rounded-lg border border-black/10 bg-white/65 px-4 py-3 text-sm leading-6 text-[#586158]">
@@ -185,9 +281,9 @@ export function CampusMap({ lang }: { lang: Lang }) {
               }`}
               key={building.id}
               onBlur={() => setHoveredId(null)}
-              onClick={() => setSelectedId(building.id)}
-              onFocus={() => setHoveredId(building.id)}
-              onMouseEnter={() => setHoveredId(building.id)}
+              onClick={() => selectBuilding(building.id)}
+              onFocus={() => focusBuilding(building.id)}
+              onMouseEnter={() => focusBuilding(building.id)}
               onMouseLeave={() => setHoveredId(null)}
               type="button"
             >
