@@ -6,17 +6,9 @@ export const teacherHouseCopy = {
     eyebrow: "Мұғалімдер үйі бойынша нұсқаулық",
     title: "Teacher House: қызметкерлерге арналған ортақ үй",
     intro:
-      "Teacher House - мектеп қызметкерлеріне арналған ортақ тұрғын кеңістік. Бұл бөлімде жайлы, қауіпсіз және тыныш өмір сүру үшін сақталатын негізгі ережелер жинақталған.",
+      "Teacher House - мектеп қызметкерлеріне арналған ортақ тұрғын кеңістік. Мұнда жайлы, қауіпсіз және тыныш өмір сүру үшін сақталатын негізгі ережелер берілген.",
     photoLabel: "Teachers House",
     photoText: "Мектеп қызметкерлеріне арналған тұрғын кеңістік",
-    cards: [
-      ["Төлем", "Коммуналдық төлем жалақы түскеннен кейін бірден жатақхана меңгерушісіне төленеді."],
-      ["Тыныштық", "22:00-08:00 аралығында көршілердің демалысын құрметтеу қажет."],
-      ["Тәртіп", "Пәтер, дәліз, баспалдақ және кіреберіс таза әрі қауіпсіз қалуы керек."],
-      ["Көмек", "Ақау, су ағу немесе тұрмыстық мәселе болса, жауапты қызметкерге ертерек хабарлаңыз."],
-    ],
-    checklistTitle: "Жылдам есте сақтау",
-    checklist: ["Тыныш уақыт: 22:00-08:00", "Темекі шегуге тыйым салынады", "Қонақ үшін тұрғын жауап береді", "Мәселе болса, бірден хабарлау"],
     rulesEyebrow: "Тұрғындарға арналған ережелер",
     rulesTitle: "Teacher House ішінде сақталатын негізгі тәртіп",
     costsTitle: "Коммуналдық шығындар",
@@ -28,6 +20,11 @@ export const teacherHouseCopy = {
       ["3 бөлмелі пәтер", "18 000 ₸"],
     ],
     rules: [
+      {
+        key: "internet",
+        title: "Интернет",
+        text: "Өкінішке қарай, Teacher House ішінде Wi-Fi желісі жоқ. Жеке мобильді интернет немесе өз роутеріңізді алдын ала жоспарлаған дұрыс.",
+      },
       {
         key: "quiet",
         title: "Тыныштық",
@@ -56,7 +53,7 @@ export const teacherHouseCopy = {
       {
         key: "parking",
         title: "Тұрақ және кіру",
-        text: "Көлікпен жаяу жүргіншілерге арналған аймақтарға, оның ішінде жаяу жүргінші плиткасы төселген жерлерге кіруге болмайды. Қақпа пульт арқылы ашылады, пульт бойынша жатақхана меңгерушісіне жүгініңіз.",
+        text: "Көлікпен жаяу жүргіншілерге арналған аймақтарға, оның ішінде жаяу жүргінші плиткасы төселген жерлерге кіруге болмайды. Қақпа пульт арқылы ашылады.",
       },
       {
         key: "repairs",
@@ -73,17 +70,9 @@ export const teacherHouseCopy = {
     eyebrow: "Гайд по Teachers House",
     title: "Teacher House: общее пространство для сотрудников школы",
     intro:
-      "Teacher House - общее жилое пространство для сотрудников школы. Чтобы всем было комфортно, безопасно и спокойно, здесь собраны основные правила проживания.",
+      "Teacher House - общее жилое пространство для сотрудников школы. Здесь собраны основные правила, чтобы всем было комфортно, безопасно и спокойно.",
     photoLabel: "Teachers House",
     photoText: "Жилое пространство для сотрудников школы",
-    cards: [
-      ["Оплата", "Коммунальные услуги оплачиваются сразу после поступления заработной платы заведующему общежитием."],
-      ["Тишина", "С 22:00 до 08:00 важно соблюдать тихий режим и уважать отдых соседей."],
-      ["Порядок", "Квартира, коридоры, лестницы и входные зоны должны оставаться чистыми и безопасными."],
-      ["Помощь", "При поломке, протечке или бытовой проблеме сообщите ответственному сотруднику как можно раньше."],
-    ],
-    checklistTitle: "Быстро запомнить",
-    checklist: ["Тишина: 22:00-08:00", "Курение запрещено", "За гостей отвечает житель", "О проблемах сообщать сразу"],
     rulesEyebrow: "Правила проживания",
     rulesTitle: "Что важно соблюдать в Teacher House",
     costsTitle: "Коммунальные расходы",
@@ -96,6 +85,11 @@ export const teacherHouseCopy = {
     ],
     rules: [
       {
+        key: "internet",
+        title: "Интернет",
+        text: "К сожалению, в Teacher House нет Wi-Fi сети. Лучше заранее планировать личный мобильный интернет или собственный роутер.",
+      },
+      {
         key: "quiet",
         title: "Тишина",
         text: "С 22:00 до 08:00 не рекомендуется громко включать музыку, устраивать шумные встречи, шуметь в коридорах и создавать звуки, которые мешают отдыху соседей.",
@@ -103,7 +97,7 @@ export const teacherHouseCopy = {
       {
         key: "clean",
         title: "Чистота и порядок",
-        text: "Поддерживайте чистоту в квартире и общих зонах. Не оставляйте мусор в коридорах, на лестницах и возле входа. Бережно относитесь к мебели, технике и имуществу Teacher House.",
+        text: "Поддерживайте чистоту в квартире и общих зонах. Не оставляйте мусор в коридорах, на лестницах и возле входа. Бережно относитесь к имуществу Teacher House.",
       },
       {
         key: "smoking",
@@ -113,17 +107,17 @@ export const teacherHouseCopy = {
       {
         key: "guests",
         title: "Гости",
-        text: "Житель несет ответственность за поведение своих гостей. Если гостю необходимо остаться на ночь, можно уточнить наличие свободного гостевого номера у заведующего общежитием.",
+        text: "Житель несет ответственность за поведение своих гостей. Если гостю нужно остаться на ночь, уточните наличие свободного гостевого номера у заведующего общежитием.",
       },
       {
         key: "pets",
         title: "Домашние животные",
-        text: "Проживание с домашними животными разрешено. Владелец отвечает за чистоту, безопасность, отсутствие ущерба имуществу и за то, чтобы животное не мешало другим жителям.",
+        text: "Проживание с домашними животными разрешено. Владелец отвечает за чистоту, безопасность, отсутствие ущерба имуществу и спокойствие других жителей.",
       },
       {
         key: "parking",
         title: "Парковка и въезд",
-        text: "Не заезжайте автомобилем на зоны для пешеходов, включая участки с пешеходной плиткой. Ворота открываются с помощью пульта, по вопросам получения пульта обратитесь к заведующему общежитием.",
+        text: "Не заезжайте автомобилем на пешеходные зоны, включая участки с пешеходной плиткой. Ворота открываются с помощью пульта.",
       },
       {
         key: "repairs",
@@ -140,17 +134,9 @@ export const teacherHouseCopy = {
     eyebrow: "Teachers House guide",
     title: "Teachers House: shared housing for school staff",
     intro:
-      "Teachers House is a shared residential space for school staff. This section gathers the core rules that keep daily life comfortable, safe, and calm for everyone.",
+      "Teachers House is a shared residential space for school staff. This section keeps the core rules short, practical, and easy to scan.",
     photoLabel: "Teachers House",
     photoText: "Residential space for school staff",
-    cards: [
-      ["Payments", "Utilities are paid to the residence manager right after salary payment."],
-      ["Quiet hours", "From 22:00 to 08:00, residents should keep the house quiet and respect neighbors' rest."],
-      ["Order", "Apartments, corridors, stairs, and entrance areas should remain clean and safe."],
-      ["Support", "Report leaks, breakages, or household issues to the responsible staff member as early as possible."],
-    ],
-    checklistTitle: "Quick reminders",
-    checklist: ["Quiet hours: 22:00-08:00", "No smoking", "Residents are responsible for guests", "Report issues early"],
     rulesEyebrow: "House rules",
     rulesTitle: "What to follow inside Teachers House",
     costsTitle: "Utility costs",
@@ -163,6 +149,11 @@ export const teacherHouseCopy = {
     ],
     rules: [
       {
+        key: "internet",
+        title: "Internet",
+        text: "Unfortunately, Teachers House does not have a Wi-Fi network. Please plan personal mobile internet or your own router in advance.",
+      },
+      {
         key: "quiet",
         title: "Quiet hours",
         text: "From 22:00 to 08:00, avoid loud music, noisy gatherings, corridor noise, and any other sounds that may disturb neighbors' rest.",
@@ -170,7 +161,7 @@ export const teacherHouseCopy = {
       {
         key: "clean",
         title: "Cleanliness and order",
-        text: "Keep your apartment and shared areas clean. Do not leave trash in corridors, stairways, or near the entrance. Treat Teachers House furniture, equipment, and property with care.",
+        text: "Keep your apartment and shared areas clean. Do not leave trash in corridors, stairways, or near the entrance. Treat Teachers House property with care.",
       },
       {
         key: "smoking",
@@ -185,17 +176,17 @@ export const teacherHouseCopy = {
       {
         key: "pets",
         title: "Pets",
-        text: "Living with pets is allowed. The owner is responsible for cleanliness, safety, preventing property damage, and making sure the pet does not disturb other residents.",
+        text: "Living with pets is allowed. The owner is responsible for cleanliness, safety, preventing property damage, and not disturbing other residents.",
       },
       {
         key: "parking",
         title: "Parking and entry",
-        text: "Do not drive into pedestrian areas, including paved pedestrian zones. The gate opens with a remote control; contact the residence manager to receive one.",
+        text: "Do not drive into pedestrian areas, including paved pedestrian zones. The gate opens with a remote control.",
       },
       {
         key: "repairs",
         title: "Breakages and issues",
-        text: "If you notice a leak, equipment problem, furniture damage, or issues with electricity, water, or heating, report it to the responsible staff member as early as possible.",
+        text: "If you notice a leak, equipment problem, furniture damage, or issues with electricity, water, or heating, report it as early as possible.",
       },
     ],
     mainRuleTitle: "Main rule",
@@ -209,9 +200,6 @@ export const teacherHouseCopy = {
   intro: string;
   photoLabel: string;
   photoText: string;
-  cards: readonly (readonly [string, string])[];
-  checklistTitle: string;
-  checklist: readonly string[];
   rulesEyebrow: string;
   rulesTitle: string;
   costsTitle: string;

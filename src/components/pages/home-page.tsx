@@ -4,20 +4,16 @@ import {
   CalendarDays,
   Car,
   CigaretteOff,
-  Coffee,
   GraduationCap,
   HeartHandshake,
   Images,
-  KeyRound,
   Map,
-  Moon,
   PawPrint,
   ReceiptText,
   ShieldCheck,
   Sparkles,
   Users,
   VolumeX,
-  Wifi,
   Wrench,
 } from "lucide-react";
 import Link from "next/link";
@@ -27,8 +23,8 @@ import { teacherHouseCopy } from "@/lib/teacher-house-i18n";
 
 const pageIcons = [Users, CalendarDays, Images];
 const buildings = ["Main School", "Freedom House", "Teachers House", "Students Residence"];
-const guideIcons = [KeyRound, Moon, Coffee, ShieldCheck];
 const ruleIcons = {
+  internet: ShieldCheck,
   quiet: VolumeX,
   clean: Sparkles,
   smoking: CigaretteOff,
@@ -153,35 +149,6 @@ export function HomePage({ lang }: { lang: Lang }) {
             <p className="mt-5 max-w-xl text-sm leading-7 text-white/72 sm:text-base">
               {housing.intro}
             </p>
-
-            <div className="mt-7 grid gap-3 sm:grid-cols-2">
-              {housing.cards.map(([title, text], index) => {
-                const Icon = guideIcons[index];
-
-                return (
-                  <article className="rounded-xl border border-white/10 bg-white/8 p-4" key={title}>
-                    <Icon className="h-5 w-5 text-[#c7d8a7]" />
-                    <h3 className="mt-4 text-lg font-semibold">{title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-white/68">{text}</p>
-                  </article>
-                );
-              })}
-            </div>
-
-            <div className="mt-5 rounded-xl border border-[#c7d8a7]/25 bg-[#c7d8a7]/10 p-4">
-              <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-[#c7d8a7]">
-                <Sparkles className="h-4 w-4" />
-                {housing.checklistTitle}
-              </div>
-              <div className="grid gap-2 sm:grid-cols-2">
-                {housing.checklist.map((item) => (
-                  <div className="flex items-center gap-2 text-sm text-white/76" key={item}>
-                    <Wifi className="h-4 w-4 shrink-0 text-[#c7d8a7]" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
 
@@ -243,7 +210,6 @@ export function HomePage({ lang }: { lang: Lang }) {
           </div>
         </div>
       </section>
-
       <section className="mx-auto w-full max-w-6xl px-5 py-12 sm:px-8 lg:px-10" id="campus">
         <div className="rounded-[2rem] border border-black/10 bg-[#172119] p-6 text-white sm:p-8">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c7d8a7]">{t.mapIdea}</p>
