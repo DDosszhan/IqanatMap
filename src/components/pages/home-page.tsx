@@ -168,8 +168,8 @@ export function HomePage({ lang }: { lang: Lang }) {
             </div>
           </div>
 
-          <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
-            <article className="rounded-2xl border border-[#c7d8a7]/25 bg-[#f7f4ee] p-5 text-[#172119] shadow-[0_18px_50px_rgba(0,0,0,0.14)]">
+          <div className="grid items-start gap-4 lg:grid-cols-[0.9fr_1.1fr]">
+            <article className="self-start rounded-2xl border border-[#c7d8a7]/25 bg-[#f7f4ee] p-5 text-[#172119] shadow-[0_18px_50px_rgba(0,0,0,0.14)]">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#172119] text-[#c7d8a7]">
                   <ReceiptText className="h-5 w-5" />
