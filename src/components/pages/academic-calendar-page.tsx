@@ -73,55 +73,64 @@ export function AcademicCalendarPage({ lang }: { lang: Lang }) {
 
       <section className="mx-auto w-full max-w-6xl px-5 pb-10 sm:px-8 lg:px-10">
         <div className="rounded-[1.75rem] border border-black/10 bg-[#172119] p-4 text-white shadow-[0_24px_80px_rgba(23,33,25,0.16)] sm:p-6">
-          <div className="mb-4 flex items-center justify-between gap-4">
+          <div className="mb-5 flex items-center justify-between gap-4">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#c7d8a7]">
                 {t.yearMap}
               </p>
               <h2 className="mt-2 text-2xl font-semibold">{t.augustJune}</h2>
             </div>
-            <Landmark className="h-7 w-7 text-[#c7d8a7]" />
+            <Landmark className="h-7 w-7 shrink-0 text-[#c7d8a7]" />
           </div>
 
-          <div className="overflow-x-auto pb-2">
-            <div className="min-w-[760px]">
-              <div className="flex overflow-hidden rounded-2xl border border-white/12 text-center text-[11px] font-semibold uppercase tracking-wide text-white/70">
-                {t.months.map((month) => (
-                  <div
-                    className="border-r border-white/10 px-2 py-3 last:border-r-0"
-                    key={month.label}
-                    style={{ flex: `${month.days} 0 0` }}
-                  >
-                    {month.label}
-                  </div>
-                ))}
+          <div className="overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="min-w-[980px] space-y-3">
+              <div className="grid grid-cols-[104px_1fr] items-stretch gap-3">
+                <div />
+                <div className="grid grid-cols-[repeat(299,minmax(0,1fr))] overflow-hidden rounded-2xl border border-white/12 text-center text-[11px] font-semibold uppercase tracking-wide text-white/70">
+                  {t.months.map((month) => (
+                    <div
+                      className="border-r border-white/10 px-2 py-3 last:border-r-0"
+                      key={month.label}
+                      style={{ gridColumn: `span ${month.days} / span ${month.days}` }}
+                    >
+                      {month.label}
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <div className="mt-4 space-y-3">
-                {t.rows.map((row) => (
-                  <div className="grid grid-cols-[92px_1fr] items-center gap-3" key={row.label}>
-                    <div className="text-xs font-semibold text-white/70">{row.label}</div>
-                    <div className="flex h-12 overflow-visible rounded-2xl bg-white/8 p-1">
-                      {row.segments.map((segment) => (
+              {t.rows.map((row) => (
+                <div className="grid grid-cols-[104px_1fr] items-center gap-3" key={row.label}>
+                  <div className="text-sm font-semibold text-white/70">{row.label}</div>
+                  <div className="grid h-14 grid-cols-[repeat(299,minmax(0,1fr))] rounded-2xl bg-white/8 p-1">
+                    {row.segments.map((segment) => {
+                      const showLabel = segment.days >= 24;
+
+                      return (
                         <div
                           aria-label={`${segment.label}: ${segment.date}. ${segment.details}`}
-                          className={`group relative flex min-w-4 items-center justify-center rounded-xl px-1 text-[11px] font-semibold shadow-sm transition hover:z-20 hover:scale-[1.03] ${segmentTone[segment.tone]}`}
+                          className={`group relative mx-0.5 flex min-w-0 items-center justify-center rounded-xl text-[11px] font-semibold shadow-sm transition hover:z-20 hover:scale-[1.03] ${segmentTone[segment.tone]}`}
                           key={`${row.label}-${segment.label}-${segment.date}`}
-                          style={{ flex: `${segment.days} 0 0` }}
+                          style={{ gridColumn: `span ${segment.days} / span ${segment.days}` }}
                           title={`${segment.label}: ${segment.date}. ${segment.details}`}
                         >
-                          <span className="truncate px-1">{segment.label}</span>
+                          {showLabel ? (
+                            <span className="truncate px-2">{segment.label}</span>
+                          ) : (
+                            <span className="h-2 w-2 rounded-full bg-current/75" />
+                          )}
                           <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 w-56 -translate-x-1/2 rounded-xl bg-white px-3 py-2 text-left text-xs font-medium leading-5 text-[#172119] opacity-0 shadow-xl ring-1 ring-black/10 transition group-hover:opacity-100">
                             <strong className="block">{segment.label}</strong>
                             <span className="block text-[#3f6d4e]">{segment.date}</span>
                             <span className="block text-[#586158]">{segment.details}</span>
                           </span>
                         </div>
-                      ))}
-                    </div>
+                      );
+                    })}
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
