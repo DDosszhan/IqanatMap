@@ -26,6 +26,7 @@ const ruleIcons = {
   internet: ShieldCheck,
   quiet: VolumeX,
   clean: Sparkles,
+  community: HeartHandshake,
   smoking: CigaretteOff,
   guests: Users,
   pets: PawPrint,

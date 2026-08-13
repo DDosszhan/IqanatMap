@@ -36,6 +36,11 @@ export const teacherHouseCopy = {
         text: "Пәтерді және ортақ аймақтарды таза ұстаңыз. Қоқысты дәлізде, баспалдақта немесе кіреберіс жанында қалдырмаңыз. Мүлікке ұқыпты қараңыз.",
       },
       {
+        key: "community",
+        title: "Жұмыла көтерген жүк жеңіл",
+        text: "Teacher House - ортақ үй. Сенбіліктерге, ортақ тазалыққа және үйді ретке келтіруге бәрінің қатысуы маңызды: бірге істелген жұмыс жеңіл әрі үйдің жайлылығын сақтайды.",
+      },
+      {
         key: "smoking",
         title: "Темекі шегу",
         text: "Мектеп аумағында және Teacher House ішінде темекі шегуге тыйым салынады.",
@@ -100,6 +105,11 @@ export const teacherHouseCopy = {
         text: "Поддерживайте чистоту в квартире и общих зонах. Не оставляйте мусор в коридорах, на лестницах и возле входа. Бережно относитесь к имуществу Teacher House.",
       },
       {
+        key: "community",
+        title: "Жұмыла көтерген жүк жеңіл",
+        text: "Teacher House - общий дом. Важно участвовать в субботниках, общей уборке и поддержании порядка: когда каждый помогает, дом остается комфортным для всех.",
+      },
+      {
         key: "smoking",
         title: "Курение",
         text: "Курение на территории школы и Teacher House запрещено.",
@@ -162,6 +172,11 @@ export const teacherHouseCopy = {
         key: "clean",
         title: "Cleanliness and order",
         text: "Keep your apartment and shared areas clean. Do not leave trash in corridors, stairways, or near the entrance. Treat Teachers House property with care.",
+      },
+      {
+        key: "community",
+        title: "Jumyly kotergen juk jenil",
+        text: "Teachers House is a shared home. Everyone is expected to take part in community clean-up days and shared upkeep: when everyone helps, the house stays comfortable for all residents.",
       },
       {
         key: "smoking",
