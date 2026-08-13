@@ -32,6 +32,13 @@ const tones = [
   "bg-[#172119] text-white border-[#172119]",
 ];
 
+const segmentTone = {
+  orientation: "bg-[#c7d8a7] text-[#172119]",
+  term: "bg-white text-[#172119]",
+  break: "bg-[#f1d879] text-[#172119]",
+  summer: "bg-[#9ecab0] text-[#172119]",
+};
+
 export function AcademicCalendarPage({ lang }: { lang: Lang }) {
   const t = calendarCopy[lang];
 
@@ -75,23 +82,47 @@ export function AcademicCalendarPage({ lang }: { lang: Lang }) {
             </div>
             <Landmark className="h-7 w-7 text-[#c7d8a7]" />
           </div>
-          <div className="grid grid-cols-11 overflow-hidden rounded-2xl border border-white/12 text-center text-[11px] font-semibold uppercase tracking-wide text-white/70">
-            {t.months.map((month) => (
-              <div
-                className="border-r border-white/10 px-2 py-3 last:border-r-0"
-                key={month}
-              >
-                {month}
+
+          <div className="overflow-x-auto pb-2">
+            <div className="min-w-[760px]">
+              <div className="flex overflow-hidden rounded-2xl border border-white/12 text-center text-[11px] font-semibold uppercase tracking-wide text-white/70">
+                {t.months.map((month) => (
+                  <div
+                    className="border-r border-white/10 px-2 py-3 last:border-r-0"
+                    key={month.label}
+                    style={{ flex: `${month.days} 0 0` }}
+                  >
+                    {month.label}
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-          <div className="mt-3 grid grid-cols-11 gap-1">
-            <div className="col-span-1 h-2 rounded-full bg-[#c7d8a7]" />
-            <div className="col-span-2 h-2 rounded-full bg-white" />
-            <div className="col-span-2 h-2 rounded-full bg-[#9ecab0]" />
-            <div className="col-span-3 h-2 rounded-full bg-white" />
-            <div className="col-span-2 h-2 rounded-full bg-[#f1d879]" />
-            <div className="col-span-1 h-2 rounded-full bg-[#c7d8a7]" />
+
+              <div className="mt-4 space-y-3">
+                {t.rows.map((row) => (
+                  <div className="grid grid-cols-[92px_1fr] items-center gap-3" key={row.label}>
+                    <div className="text-xs font-semibold text-white/70">{row.label}</div>
+                    <div className="flex h-12 overflow-visible rounded-2xl bg-white/8 p-1">
+                      {row.segments.map((segment) => (
+                        <div
+                          aria-label={`${segment.label}: ${segment.date}. ${segment.details}`}
+                          className={`group relative flex min-w-4 items-center justify-center rounded-xl px-1 text-[11px] font-semibold shadow-sm transition hover:z-20 hover:scale-[1.03] ${segmentTone[segment.tone]}`}
+                          key={`${row.label}-${segment.label}-${segment.date}`}
+                          style={{ flex: `${segment.days} 0 0` }}
+                          title={`${segment.label}: ${segment.date}. ${segment.details}`}
+                        >
+                          <span className="truncate px-1">{segment.label}</span>
+                          <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 w-56 -translate-x-1/2 rounded-xl bg-white px-3 py-2 text-left text-xs font-medium leading-5 text-[#172119] opacity-0 shadow-xl ring-1 ring-black/10 transition group-hover:opacity-100">
+                            <strong className="block">{segment.label}</strong>
+                            <span className="block text-[#3f6d4e]">{segment.date}</span>
+                            <span className="block text-[#586158]">{segment.details}</span>
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
