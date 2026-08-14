@@ -248,13 +248,13 @@ export function CampusMap({ lang, preload = false }: { lang: Lang; preload?: boo
         </svg>
 
         {activePier || activeBuilding ? (
-          <div aria-live="polite" className="absolute bottom-4 left-4 z-20 hidden w-[min(23rem,calc(100%-2rem))] md:block">
+          <div aria-live="polite" className="absolute bottom-4 left-4 z-20 hidden w-[min(23rem,calc(100%-2rem))] lg:block">
             {activePier ? <PierCard lang={lang} /> : activeBuilding ? <BuildingCard building={activeBuilding} lang={lang} /> : null}
           </div>
         ) : null}
       </div>
 
-      <div className="mt-3 md:hidden" aria-live="polite">
+      <div className="mt-3 lg:hidden" aria-live="polite">
         {activePier ? (
           <PierCard lang={lang} />
         ) : activeBuilding ? (

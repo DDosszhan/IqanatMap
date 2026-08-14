@@ -34,15 +34,15 @@ export function OrdaDetailPage({ lang, orda }: { lang: Lang; orda: Orda }) {
           </div>
         </div>
 
-        <div className={`order-1 overflow-hidden rounded-2xl border ${orda.ring} bg-gradient-to-br ${orda.colors} p-6 shadow-[0_28px_90px_rgba(35,70,51,0.18)] lg:order-2`}>
-          <div className="grid min-h-[min(72vh,680px)] place-items-center rounded-xl bg-white/92 p-5 sm:p-8">
+        <div className="order-1 grid place-items-center lg:order-2">
+          <div className={`relative aspect-square w-full max-w-[min(72vh,680px)] overflow-hidden rounded-2xl border ${orda.ring} shadow-[0_28px_90px_rgba(35,70,51,0.18)]`}>
             <Image
               src={orda.logo}
               alt={`${orda.name} Orda`}
               width={orda.logoWidth}
               height={orda.logoHeight}
               sizes="(max-width: 1024px) 92vw, 52vw"
-              className="max-h-[min(62vh,620px)] w-auto max-w-full object-contain"
+              className="h-full w-full object-cover"
               decoding="async"
             />
           </div>

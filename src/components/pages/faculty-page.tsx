@@ -1,24 +1,93 @@
 "use client";
 
-import { Mail, MapPin, Search, UserRound, X } from "lucide-react";
+import { Mail, Phone, Search, UserRound, X } from "lucide-react";
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { copy, type Lang } from "@/lib/i18n";
 
-const teachers = [
-  ["Teacher Name", "Mathematics", "Main School", "Room 204"],
-  ["Teacher Name", "English", "Main School", "Room 118"],
-  ["Teacher Name", "Science", "Freedom House", "Lab 2"],
-  ["Teacher Name", "House Mentor", "Students Residence", "Residence desk"],
-  ["Teacher Name", "Academic Coordinator", "Teachers House", "Office 3"],
-  ["Teacher Name", "Clubs Coordinator", "Freedom House", "Project room"],
-] as const;
+type Teacher = {
+  name: string;
+  role: Record<Lang, string>;
+  email: string;
+  phone: string;
+  photo?: string;
+  photoAlt?: string;
+};
+
+const teachers: Teacher[] = [
+  {
+    name: "Жанибек ұстаз",
+    role: { kk: "Мектеп директоры", ru: "Директор школы", en: "School Director" },
+    email: "zhanibek.zhankulov@iqhs.edu.kz",
+    phone: "+7 707 299 9965",
+    photo: "/teachers/zhanibek-zhankulov-cutout-final.png",
+    photoAlt: "Жанибек ұстаз",
+  },
+  {
+    name: "Арайлым ұстаз",
+    role: {
+      kk: "Академиялық бөлім бойынша директордың орынбасары",
+      ru: "Заместитель директора по академической части",
+      en: "Deputy Director for Academics",
+    },
+    email: "ArailymAibekova@iqhs.edu.kz",
+    phone: "+7 705 611 2603",
+    photo: "/teachers/arailym-aibekova-cutout-final.png",
+    photoAlt: "Арайлым ұстаз",
+  },
+  {
+    name: "Алмас ұстаз",
+    role: {
+      kk: "Менеджер - мұғалімдер үйінің меңгерушісі",
+      ru: "Менеджер - заведующий учительским домом",
+      en: "Manager - Head of Teachers House",
+    },
+    email: "almasnesipbay@iqhs.edu.kz",
+    phone: "+7 707 441 4195",
+    photo: "/teachers/almas-nesipbay-cutout-final.png",
+    photoAlt: "Алмас ұстаз",
+  },
+  {
+    name: "Айғаным ұстаз",
+    role: { kk: "Әдіскер", ru: "Методист", en: "Methodologist" },
+    email: "aiganym.ibrahimova@iqhs.edu.kz",
+    phone: "+7 747 569 1593",
+    photo: "/teachers/aiganym-ibrahimova-cutout-final.png",
+    photoAlt: "Айғаным ұстаз",
+  },
+  {
+    name: "Жанна ұстаз",
+    role: { kk: "Сатылым менеджері", ru: "Менеджер по продажам", en: "Sales Manager" },
+    email: "JannaEsilbaeva@iqhs.edu.kz",
+    phone: "+7 705 250 74 77",
+    photo: "/teachers/janna-esilbaeva-cutout-final.png",
+    photoAlt: "Жанна ұстаз",
+  },
+  {
+    name: "Бекжан ұстаз",
+    role: { kk: "Ақылды адам", ru: "Умный чел", en: "Smart Guy" },
+    email: "BekzhanSerikkaliyev@iqhs.edu.kz",
+    phone: "+7 776 995 0299",
+    photo: "/teachers/bekzhan-serikkaliyev-cutout-final.png",
+    photoAlt: "Бекжан ұстаз",
+  },
+];
 
 const clearLabels: Record<Lang, string> = {
   kk: "Іздеуді тазарту",
   ru: "Очистить поиск",
   en: "Clear search",
 };
+
+function phoneHref(phone: string) {
+  const normalized = phone.replace(/[^+\d]/g, "");
+  return `tel:${normalized}`;
+}
+
+function teacherSearchText(teacher: Teacher) {
+  return [teacher.name, ...Object.values(teacher.role), teacher.email, teacher.phone].join(" ");
+}
 
 export function FacultyPage({ lang }: { lang: Lang }) {
   const [query, setQuery] = useState("");
@@ -29,7 +98,7 @@ export function FacultyPage({ lang }: { lang: Lang }) {
     if (!normalizedQuery) return teachers;
 
     return teachers.filter((teacher) =>
-      teacher.some((value) => value.toLocaleLowerCase(locale).includes(normalizedQuery)),
+      teacherSearchText(teacher).toLocaleLowerCase(locale).includes(normalizedQuery),
     );
   }, [locale, query]);
 
@@ -72,26 +141,47 @@ export function FacultyPage({ lang }: { lang: Lang }) {
 
       <section
         aria-live="polite"
-        className="mx-auto grid w-full max-w-6xl gap-4 px-5 pb-12 sm:px-8 md:grid-cols-2 lg:grid-cols-3 lg:px-10"
+        className="mx-auto grid w-full max-w-6xl gap-x-5 gap-y-28 px-5 pb-12 pt-24 sm:px-8 md:grid-cols-2 lg:grid-cols-3 lg:px-10"
       >
         {filteredTeachers.length ? (
-          filteredTeachers.map(([name, role, building, room], index) => (
-            <article className="overflow-hidden rounded-lg border border-black/10 bg-white/75" key={`${role}-${index}`}>
-              <div className="flex aspect-[4/3] items-center justify-center bg-[#dfe7d2]">
-                <UserRound className="h-16 w-16 text-[#3f7654]" />
+          filteredTeachers.map((teacher) => (
+            <article
+              className="relative mt-28 w-full max-w-[20rem] justify-self-center rounded-lg border border-[#d7cdbd] bg-[#fbfaf6]/95 px-5 pb-5 pt-32 shadow-[0_22px_46px_rgba(35,70,51,0.14)]"
+              key={teacher.email}
+            >
+              <div className="pointer-events-none absolute -top-52 left-1/2 z-20 h-[19rem] w-[74%] max-w-[15.5rem] -translate-x-1/2">
+                {teacher.photo ? (
+                  <Image
+                    alt={teacher.photoAlt ?? teacher.name}
+                    className="object-contain object-bottom drop-shadow-[0_22px_22px_rgba(24,45,33,0.22)]"
+                    fill
+                    priority={false}
+                    sizes="(min-width: 1024px) 248px, (min-width: 768px) 34vw, 74vw"
+                    src={teacher.photo}
+                  />
+                ) : (
+                  <div className="flex h-full items-center justify-center rounded-lg bg-[#dfe7d2]">
+                    <UserRound className="h-16 w-16 text-[#3f7654]" />
+                  </div>
+                )}
+                <div className="absolute bottom-0 left-1/2 z-30 h-[2px] w-[92%] -translate-x-1/2 rounded-full bg-gradient-to-r from-transparent via-[#b9aa93] to-transparent" />
+                <div className="absolute -bottom-1 left-1/2 z-20 h-3 w-[58%] -translate-x-1/2 rounded-full bg-[#234633]/18 blur-sm" />
               </div>
-              <div className="p-5">
-                <h2 className="text-xl font-semibold">{name}</h2>
-                <p className="mt-1 text-sm font-medium text-[#3f7654]">{role}</p>
+              <div className="absolute inset-x-12 top-12 h-14 rounded-full bg-[#234633]/12 blur-2xl" />
+              <div className="relative z-10">
+                <h2 className="text-2xl font-semibold leading-tight">{teacher.name}</h2>
+                <p className="mt-1 text-xs font-semibold uppercase leading-relaxed tracking-[0.08em] text-[#3f7654]">
+                  {teacher.role[lang]}
+                </p>
                 <div className="mt-5 grid gap-3 text-sm text-[#627267]">
-                  <p className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4" />
-                    {building}, {room}
-                  </p>
-                  <p className="flex items-center gap-2">
-                    <Mail className="h-4 w-4" />
-                    {t.email}
-                  </p>
+                  <a className="flex items-center gap-2 transition hover:text-[#234633]" href={`mailto:${teacher.email}`}>
+                    <Mail className="h-4 w-4 shrink-0" />
+                    <span className="break-all">{teacher.email}</span>
+                  </a>
+                  <a className="flex items-center gap-2 transition hover:text-[#234633]" href={phoneHref(teacher.phone)}>
+                    <Phone className="h-4 w-4 shrink-0" />
+                    <span>{teacher.phone}</span>
+                  </a>
                 </div>
               </div>
             </article>
@@ -106,3 +196,4 @@ export function FacultyPage({ lang }: { lang: Lang }) {
     </main>
   );
 }
+
