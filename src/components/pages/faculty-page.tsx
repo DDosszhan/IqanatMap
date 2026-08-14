@@ -72,6 +72,14 @@ const teachers: Teacher[] = [
     photo: "/teachers/bekzhan-serikkaliyev-cutout-final.png",
     photoAlt: "Бекжан ұстаз",
   },
+  {
+    name: "Нұрбақ ұстаз",
+    role: { kk: "Керемет адам", ru: "Крутой чел", en: "Cool Guy" },
+    email: "nurbak.kuanysh@iqhs.edu.kz",
+    phone: "+7 777 777 77 77",
+    photo: "/teachers/nurbak-kuanysh-cutout-final.png",
+    photoAlt: "Нұрбақ ұстаз",
+  },
 ];
 
 const clearLabels: Record<Lang, string> = {
