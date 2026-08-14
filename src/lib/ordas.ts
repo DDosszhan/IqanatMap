@@ -1,8 +1,8 @@
 export type OrdaSlug =
   | "aq"
+  | "kok"
   | "qonyr"
   | "kuren"
-  | "kok"
   | "kumis"
   | "jasyl"
   | "sary"
@@ -27,9 +27,9 @@ export type Orda = {
 
 export const ordas = [
   { slug: "aq", name: "AQ", logo: "/ordas/logos/aq.webp", logoWidth: 1400, logoHeight: 1400, colors: "from-[#234633] to-[#3f7654]", ring: "border-[#d6b568]/45", mark: "bg-[#d6b568]" },
+  { slug: "kok", name: "KOK", logo: "/ordas/logos/kok.webp", logoWidth: 1400, logoHeight: 1400, colors: "from-[#2f318f] to-[#5a61c8]", ring: "border-[#b9bef8]/60", mark: "bg-[#b9bef8]" },
   { slug: "qonyr", name: "QONYR", logo: "/ordas/logos/qonyr.webp", logoWidth: 1400, logoHeight: 1400, colors: "from-[#6b3f16] to-[#9a6a2e]", ring: "border-[#d8b176]/55", mark: "bg-[#d8b176]" },
   { slug: "kuren", name: "KUREN", logo: "/ordas/logos/kuren.webp", logoWidth: 1400, logoHeight: 1400, colors: "from-[#671f17] to-[#9d3428]", ring: "border-[#d08372]/55", mark: "bg-[#d08372]" },
-  { slug: "kok", name: "KOK", logo: "/ordas/logos/kok.webp", logoWidth: 1400, logoHeight: 1400, colors: "from-[#2f318f] to-[#5a61c8]", ring: "border-[#b9bef8]/60", mark: "bg-[#b9bef8]" },
   { slug: "kumis", name: "KUMIS", logo: "/ordas/logos/kumis.webp", logoWidth: 1400, logoHeight: 1400, colors: "from-[#58616a] to-[#9ba6ae]", ring: "border-[#dbe1e5]/60", mark: "bg-[#dbe1e5]" },
   { slug: "jasyl", name: "JASYL", logo: "/ordas/logos/jasyl.webp", logoWidth: 1400, logoHeight: 1400, colors: "from-[#1f6d45] to-[#54a36b]", ring: "border-[#bce3bc]/55", mark: "bg-[#bce3bc]" },
   { slug: "sary", name: "SARY", logo: "/ordas/logos/sary.webp", logoWidth: 1400, logoHeight: 1400, colors: "from-[#8f6d13] to-[#d7b337]", ring: "border-[#f3e39a]/60", mark: "bg-[#f3e39a]" },

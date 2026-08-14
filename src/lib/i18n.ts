@@ -51,7 +51,7 @@ export const copy = {
     ordas: {
       eyebrow: "IQanat ордалары",
       title: "14 орда",
-      intro: "Әр орданың өз түсі, мінезі және белгісі бар. Карточканы ашқанда тек сол орданың логотипі жүктеледі.",
+      intro: "Актуалды 14 орда: әрқайсысының өз түсі, мінезі және логотипі бар. Карточканы ашқанда тек таңдалған орданың белгісі жүктеледі.",
       logoPlaceholder: "Орда белгісі",
       membersLabel: "Оқушылар қауымдастығы",
     },
@@ -89,7 +89,7 @@ export const copy = {
       ],
       values: {
         eyebrow: "Ценности IQanat",
-        title: "Лидеры будущего, ценности для жизни",
+        title: "Лидерство и ценности для жизни",
         intro: "Четыре принципа задают культуру школы, отношения в сообществе и ежедневные решения.",
         items: [
           ["Совесть и честность", "Нравственность, порядочность и привычка поступать правильно."],
@@ -102,7 +102,7 @@ export const copy = {
     ordas: {
       eyebrow: "Орды IQanat",
       title: "14 орд",
-      intro: "У каждой орды есть свой цвет, характер и логотип. При открытии карточки загружается только логотип выбранной орды.",
+      intro: "Актуальные 14 орд: у каждой есть свой цвет, характер и логотип. При открытии карточки загружается только знак выбранной орды.",
       logoPlaceholder: "Знак орды",
       membersLabel: "Сообщество учеников",
     },
@@ -140,7 +140,7 @@ export const copy = {
       ],
       values: {
         eyebrow: "IQanat values",
-        title: "Leaders for the future, values for life",
+        title: "Values for leadership and life",
         intro: "Four principles that shape the school culture, community relationships, and everyday choices.",
         items: [
           ["Morality and Integrity", "Conscience, morals, ethics, and the habit of doing the right thing."],
@@ -153,7 +153,7 @@ export const copy = {
     ordas: {
       eyebrow: "IQanat ordas",
       title: "14 ordas",
-      intro: "Each orda has its own color, character, and logo. Open a card to load only the selected orda asset.",
+      intro: "The current set of 14 ordas is live: each one has its own color, character, and logo. Opening a card loads only the selected orda mark.",
       logoPlaceholder: "Orda mark",
       membersLabel: "Student community",
     },
