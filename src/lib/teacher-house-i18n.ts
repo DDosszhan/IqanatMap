@@ -26,6 +26,11 @@ export const teacherHouseCopy = {
         text: "Өкінішке қарай, Teacher House ішінде Wi-Fi желісі жоқ. Жеке мобильді интернет немесе өз роутеріңізді алдын ала жоспарлаған дұрыс.",
       },
       {
+        key: "electricity",
+        title: "Электр қуаты",
+        text: "Электр қуатының шығыны есептегіш бойынша есептеледі және коммуналдық төлемнен бөлек төленеді.",
+      },
+      {
         key: "quiet",
         title: "Тыныштық",
         text: "22:00-08:00 аралығында қатты музыка, шулы кездесулер, дәліздегі шу және көршілердің демалысына кедергі келтіретін басқа дыбыстар болмауы керек.",
@@ -95,6 +100,11 @@ export const teacherHouseCopy = {
         text: "К сожалению, в Teacher House нет Wi-Fi сети. Лучше заранее планировать личный мобильный интернет или собственный роутер.",
       },
       {
+        key: "electricity",
+        title: "Электричество",
+        text: "Расход электричества считается по счётчику и оплачивается отдельно от коммунального платежа.",
+      },
+      {
         key: "quiet",
         title: "Тишина",
         text: "С 22:00 до 08:00 не рекомендуется громко включать музыку, устраивать шумные встречи, шуметь в коридорах и создавать звуки, которые мешают отдыху соседей.",
@@ -162,6 +172,11 @@ export const teacherHouseCopy = {
         key: "internet",
         title: "Internet",
         text: "Unfortunately, Teachers House does not have a Wi-Fi network. Please plan personal mobile internet or your own router in advance.",
+      },
+      {
+        key: "electricity",
+        title: "Electricity",
+        text: "Electricity usage is calculated by meter reading and paid separately from the utility payment.",
       },
       {
         key: "quiet",

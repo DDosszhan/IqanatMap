@@ -6,10 +6,10 @@ import type { calendarCopy } from "@/lib/calendar-i18n";
 import type { Lang } from "@/lib/i18n";
 
 const segmentTone = {
-  orientation: "bg-[#c7d8a7] text-[#172119]",
-  term: "bg-white text-[#172119]",
-  break: "bg-[#f1d879] text-[#172119]",
-  summer: "bg-[#9ecab0] text-[#172119]",
+  orientation: "bg-[#d6b568] text-[#234633]",
+  term: "bg-white text-[#234633]",
+  break: "bg-[#f1d879] text-[#234633]",
+  summer: "bg-[#9ecab0] text-[#234633]",
 };
 
 type CalendarContent = (typeof calendarCopy)[Lang];
@@ -82,7 +82,7 @@ export function AcademicYearMap({ t }: { t: CalendarContent }) {
                     aria-hidden="true"
                     className={`mt-1.5 h-2.5 w-2.5 rounded-sm ${
                       segment.tone === "orientation"
-                        ? "bg-[#c7d8a7]"
+                        ? "bg-[#d6b568]"
                         : segment.tone === "term"
                           ? "bg-white"
                           : segment.tone === "break"
@@ -93,7 +93,7 @@ export function AcademicYearMap({ t }: { t: CalendarContent }) {
                   <div className="min-w-0">
                     <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
                       <p className="text-sm font-semibold text-white">{segment.label}</p>
-                      <p className="text-xs font-medium text-[#c7d8a7]">{segment.date}</p>
+                      <p className="text-xs font-medium text-[#d6b568]">{segment.date}</p>
                     </div>
                     <p className="mt-1 text-xs leading-5 text-white/60">{segment.details}</p>
                   </div>
@@ -160,7 +160,7 @@ export function AcademicYearMap({ t }: { t: CalendarContent }) {
       {tooltip && typeof document !== "undefined"
         ? createPortal(
             <span
-              className="pointer-events-none fixed z-[100] w-56 rounded-xl bg-white px-3 py-2 text-left text-xs font-medium leading-5 text-[#172119] shadow-xl ring-1 ring-black/10"
+              className="pointer-events-none fixed z-[100] w-56 rounded-xl bg-white px-3 py-2 text-left text-xs font-medium leading-5 text-[#234633] shadow-xl ring-1 ring-black/10"
               id="calendar-segment-tooltip"
               role="tooltip"
               style={{
@@ -170,8 +170,8 @@ export function AcademicYearMap({ t }: { t: CalendarContent }) {
               }}
             >
               <strong className="block">{tooltip.label}</strong>
-              <span className="block text-[#3f6d4e]">{tooltip.date}</span>
-              <span className="block text-[#586158]">{tooltip.details}</span>
+              <span className="block text-[#3f7654]">{tooltip.date}</span>
+              <span className="block text-[#627267]">{tooltip.details}</span>
             </span>,
             document.body,
           )

@@ -7,8 +7,10 @@ import {
   Images,
   Map,
   Menu,
+  Users,
   X,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { copy, languagePath, languages, type Lang } from "@/lib/i18n";
@@ -49,6 +51,12 @@ export function SiteHeader({ lang, path = "/" }: { lang: Lang; path?: string }) 
       active: false,
     },
     {
+      href: languagePath(lang, "/ordas"),
+      label: t.ordas,
+      icon: Users,
+      active: path === "/ordas",
+    },
+    {
       href: languagePath(lang, "/map"),
       label: t.map,
       icon: Map,
@@ -57,13 +65,13 @@ export function SiteHeader({ lang, path = "/" }: { lang: Lang; path?: string }) 
   ];
 
   const languagePicker = (
-    <div className="flex min-w-fit items-center gap-0.5 rounded-full border border-black/10 bg-[#f7f4ee]/85 p-1 text-[11px] font-semibold text-[#3f6d4e] sm:gap-1 sm:text-xs">
+    <div className="flex min-w-fit items-center gap-0.5 rounded-full border border-black/10 bg-[#f7f4ee]/85 p-1 text-[11px] font-semibold text-[#3f7654] sm:gap-1 sm:text-xs">
       {languages.map((code) => (
         <Link
           aria-current={code === lang ? "page" : undefined}
           aria-label={`${t.language}: ${code.toUpperCase()}`}
           className={`rounded-full px-2 py-1.5 transition sm:px-2.5 ${
-            code === lang ? "bg-[#172119] text-white" : "hover:bg-black/5"
+            code === lang ? "bg-[#234633] text-white" : "hover:bg-black/5"
           }`}
           href={languagePath(code, path)}
           key={code}
@@ -76,20 +84,29 @@ export function SiteHeader({ lang, path = "/" }: { lang: Lang; path?: string }) 
 
   return (
     <header className="sticky top-3 z-50 px-3 sm:px-4">
-      <div className="mx-auto w-full max-w-5xl rounded-2xl border border-white/60 bg-white/65 px-3 py-2 shadow-[0_18px_60px_rgba(23,33,25,0.12)] backdrop-blur-2xl md:rounded-full md:px-4">
+      <div className="mx-auto w-full max-w-6xl rounded-2xl border border-white/60 bg-white/65 px-3 py-2 shadow-[0_18px_60px_rgba(35,70,51,0.12)] backdrop-blur-2xl md:rounded-full md:px-4">
         <div className="flex items-center justify-between gap-2">
           <Link
-            className="flex min-w-fit items-center gap-2 rounded-full bg-[#172119] px-3 py-2 text-sm font-semibold text-white shadow-sm sm:px-4"
+            className="group flex min-w-fit items-center gap-2.5 rounded-full border border-[#d6b568]/40 bg-[#234633] py-1.5 pl-1.5 pr-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(35,70,51,0.2)] transition hover:border-[#d6b568]/70 hover:bg-[#2a563c] sm:pr-4"
             href={languagePath(lang)}
             onClick={() => setMenuOpen(false)}
           >
-            <span className="grid h-6 w-6 place-items-center rounded-full bg-[#c7d8a7] text-xs font-bold text-[#172119]">
-              IQ
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#d6b568] p-0.5 shadow-[0_0_0_3px_rgba(214,181,104,0.18)]">
+              <span className="relative h-full w-full overflow-hidden rounded-full border border-white/80 bg-white">
+                <Image
+                  alt="IQanat"
+                  className="object-cover"
+                  fill
+                  priority
+                  sizes="40px"
+                  src="/school-logo.jpg"
+                />
+              </span>
             </span>
-            <span className="hidden sm:inline">IQanat</span>
+            <span className="hidden text-base font-bold text-[#fffaf0] drop-shadow-[0_1px_1px_rgba(0,0,0,0.28)] transition group-hover:text-[#f1ddb2] sm:inline">IQanat</span>
           </Link>
 
-          <nav className="hidden min-w-0 flex-1 items-center justify-center gap-1 px-1 text-sm font-medium text-[#465047] md:flex">
+          <nav className="hidden min-w-0 flex-1 items-center justify-center gap-1 px-1 text-sm font-medium text-[#506255] md:flex">
             {navItems.map((item) => {
               const Icon = item.icon;
 
@@ -98,15 +115,15 @@ export function SiteHeader({ lang, path = "/" }: { lang: Lang; path?: string }) 
                   aria-current={item.active ? "page" : undefined}
                   className={`group flex min-w-fit items-center gap-2 rounded-full px-3 py-2 transition ${
                     item.active
-                      ? "bg-[#172119] text-white shadow-sm"
-                      : "hover:bg-[#172119] hover:text-white"
+                      ? "bg-[#234633] text-white shadow-sm"
+                      : "hover:bg-[#234633] hover:text-white"
                   }`}
                   href={item.href}
                   key={item.href}
                 >
                   <Icon
                     className={`h-4 w-4 transition ${
-                      item.active ? "text-[#c7d8a7]" : "text-[#3f6d4e] group-hover:text-[#c7d8a7]"
+                      item.active ? "text-[#d6b568]" : "text-[#3f7654] group-hover:text-[#d6b568]"
                     }`}
                   />
                   <span>{item.label}</span>
@@ -120,7 +137,7 @@ export function SiteHeader({ lang, path = "/" }: { lang: Lang; path?: string }) 
             <button
               aria-expanded={menuOpen}
               aria-label={menuOpen ? menuLabels[lang].close : menuLabels[lang].open}
-              className="grid h-10 w-10 place-items-center rounded-full text-[#172119] transition hover:bg-black/5 md:hidden"
+              className="grid h-10 w-10 place-items-center rounded-full text-[#234633] transition hover:bg-black/5 md:hidden"
               onClick={() => setMenuOpen((open) => !open)}
               title={menuOpen ? menuLabels[lang].close : menuLabels[lang].open}
               type="button"
@@ -140,14 +157,14 @@ export function SiteHeader({ lang, path = "/" }: { lang: Lang; path?: string }) 
                   aria-current={item.active ? "page" : undefined}
                   className={`flex min-h-11 items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold transition ${
                     item.active
-                      ? "bg-[#172119] text-white"
-                      : "text-[#465047] hover:bg-black/5 hover:text-[#172119]"
+                      ? "bg-[#234633] text-white"
+                      : "text-[#506255] hover:bg-black/5 hover:text-[#234633]"
                   }`}
                   href={item.href}
                   key={item.href}
                   onClick={() => setMenuOpen(false)}
                 >
-                  <Icon className={`h-4 w-4 shrink-0 ${item.active ? "text-[#c7d8a7]" : "text-[#3f6d4e]"}`} />
+                  <Icon className={`h-4 w-4 shrink-0 ${item.active ? "text-[#d6b568]" : "text-[#3f7654]"}`} />
                   <span>{item.label}</span>
                 </Link>
               );

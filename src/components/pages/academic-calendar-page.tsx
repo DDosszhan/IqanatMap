@@ -24,57 +24,57 @@ const stepIcons = [
 ];
 
 const tones = [
-  "bg-[#172119] text-white border-[#172119]",
-  "bg-white/80 text-[#172119] border-black/10",
-  "bg-[#eef6f1] text-[#172119] border-[#b8d7c4]",
-  "bg-white/80 text-[#172119] border-black/10",
-  "bg-[#fff7df] text-[#172119] border-[#ead48f]",
-  "bg-[#f0f3ff] text-[#172119] border-[#c7d0f2]",
-  "bg-[#172119] text-white border-[#172119]",
+  "bg-[#234633] text-white border-[#234633]",
+  "bg-white/80 text-[#234633] border-black/10",
+  "bg-[#eef6f1] text-[#234633] border-[#b8d7c4]",
+  "bg-white/80 text-[#234633] border-black/10",
+  "bg-[#fff7df] text-[#234633] border-[#ead48f]",
+  "bg-[#f0f3ff] text-[#234633] border-[#c7d0f2]",
+  "bg-[#234633] text-white border-[#234633]",
 ];
 
 export function AcademicCalendarPage({ lang }: { lang: Lang }) {
   const t = calendarCopy[lang];
 
   return (
-    <main className="min-h-screen bg-[#f7f4ee] text-[#172119]">
+    <main className="ornamented-page min-h-screen bg-[#f7f4ee] text-[#234633]">
       <SiteHeader lang={lang} path="/teachers/calendar" />
 
       <section className="mx-auto w-full max-w-6xl px-5 pb-8 pt-10 sm:px-8 lg:px-10">
         <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#3f6d4e]">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#3f7654]">
               {t.eyebrow}
             </p>
             <h1 className="mt-4 max-w-3xl text-5xl font-semibold leading-[0.95] sm:text-7xl">
               {t.title}
             </h1>
           </div>
-          <div className="rounded-[1.75rem] border border-white/60 bg-white/55 p-5 shadow-[0_18px_60px_rgba(23,33,25,0.1)] backdrop-blur-xl">
+          <div className="rounded-[1.75rem] border border-white/60 bg-white/55 p-5 shadow-[0_18px_60px_rgba(35,70,51,0.1)] backdrop-blur-xl">
             <div className="flex items-center gap-3">
-              <CalendarClock className="h-6 w-6 text-[#3f6d4e]" />
-              <span className="text-sm font-semibold uppercase tracking-[0.18em] text-[#3f6d4e]">
+              <CalendarClock className="h-6 w-6 text-[#3f7654]" />
+              <span className="text-sm font-semibold uppercase tracking-[0.18em] text-[#3f7654]">
                 {t.current}
               </span>
             </div>
             <p className="mt-4 text-6xl font-semibold leading-none sm:text-7xl">
               2026–2027
             </p>
-            <p className="mt-4 text-sm leading-6 text-[#586158]">{t.intro}</p>
+            <p className="mt-4 text-sm leading-6 text-[#627267]">{t.intro}</p>
           </div>
         </div>
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-5 pb-10 sm:px-8 lg:px-10">
-        <div className="rounded-[1.75rem] border border-black/10 bg-[#172119] p-4 text-white shadow-[0_24px_80px_rgba(23,33,25,0.16)] sm:p-6">
+        <div className="rounded-[1.75rem] border border-black/10 bg-[#234633] p-4 text-white shadow-[0_24px_80px_rgba(35,70,51,0.16)] sm:p-6">
           <div className="mb-5 flex items-center justify-between gap-4">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#c7d8a7]">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#d6b568]">
                 {t.yearMap}
               </p>
               <h2 className="mt-2 text-2xl font-semibold">{t.augustJune}</h2>
             </div>
-            <Landmark className="h-7 w-7 shrink-0 text-[#c7d8a7]" />
+            <Landmark className="h-7 w-7 shrink-0 text-[#d6b568]" />
           </div>
 
           <AcademicYearMap t={t} />
@@ -108,7 +108,7 @@ export function AcademicCalendarPage({ lang }: { lang: Lang }) {
                     </p>
                   </div>
                 </div>
-                <div className="min-w-full rounded-2xl bg-white/45 p-4 text-sm font-semibold leading-6 text-[#172119] sm:min-w-72">
+                <div className="min-w-full rounded-2xl bg-white/45 p-4 text-sm font-semibold leading-6 text-[#234633] sm:min-w-72">
                   {date}
                 </div>
               </div>
@@ -118,7 +118,7 @@ export function AcademicCalendarPage({ lang }: { lang: Lang }) {
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-5 py-10 sm:px-8 lg:px-10">
-        <div className="flex gap-4 rounded-[1.5rem] border border-[#ead48f] bg-[#fff7df] p-5 text-[#172119]">
+        <div className="flex gap-4 rounded-[1.5rem] border border-[#ead48f] bg-[#fff7df] p-5 text-[#234633]">
           <AlertTriangle className="mt-1 h-5 w-5 shrink-0 text-[#8a6a13]" />
           <div>
             <h2 className="text-lg font-semibold">{t.change}</h2>

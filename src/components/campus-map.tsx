@@ -35,12 +35,12 @@ function BuildingCard({ building, lang }: { building: Building; lang: Lang }) {
   const content = building.copy[lang];
 
   return (
-    <div className="rounded-lg border border-white/45 bg-[#fdfbf7]/95 p-4 text-[#172119] shadow-[0_18px_55px_rgba(0,0,0,0.24)] backdrop-blur-xl">
-      <p className="text-xs font-semibold uppercase text-[#3f6d4e]">{content.type}</p>
+    <div className="rounded-lg border border-white/45 bg-[#fdfbf7]/95 p-4 text-[#234633] shadow-[0_18px_55px_rgba(0,0,0,0.24)] backdrop-blur-xl">
+      <p className="text-xs font-semibold uppercase text-[#3f7654]">{content.type}</p>
       <h3 className="mt-1 text-xl font-semibold">{content.name}</h3>
-      <p className="mt-2 text-sm leading-6 text-[#586158]">{content.description}</p>
+      <p className="mt-2 text-sm leading-6 text-[#627267]">{content.description}</p>
       <Link
-        className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#2f5c3d] transition hover:text-[#172119] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3f6d4e] focus-visible:ring-offset-2"
+        className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#2f6a49] transition hover:text-[#234633] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3f7654] focus-visible:ring-offset-2"
         href={languagePath(lang, `/map/${building.slug}`)}
       >
         {t.viewBuilding}
@@ -54,11 +54,11 @@ function PierCard({ lang }: { lang: Lang }) {
   const content = pierCopy[lang];
 
   return (
-    <div className="rounded-lg border border-white/45 bg-[#fdfbf7]/95 p-4 text-[#172119] shadow-[0_18px_55px_rgba(0,0,0,0.24)] backdrop-blur-xl">
-      <p className="text-xs font-semibold uppercase text-[#3f6d4e]">{content.type}</p>
+    <div className="rounded-lg border border-white/45 bg-[#fdfbf7]/95 p-4 text-[#234633] shadow-[0_18px_55px_rgba(0,0,0,0.24)] backdrop-blur-xl">
+      <p className="text-xs font-semibold uppercase text-[#3f7654]">{content.type}</p>
       <h3 className="mt-1 text-xl font-semibold">{content.name}</h3>
-      <p className="mt-2 text-sm leading-6 text-[#586158]">{content.description}</p>
-      <blockquote className="mt-4 border-l-2 border-[#9bb27b] pl-3 text-sm italic leading-6 text-[#31523b]">
+      <p className="mt-2 text-sm leading-6 text-[#627267]">{content.description}</p>
+      <blockquote className="mt-4 border-l-2 border-[#9bb27b] pl-3 text-sm italic leading-6 text-[#2f5f43]">
         “{content.quote}”
       </blockquote>
     </div>
@@ -113,7 +113,7 @@ export function CampusMap({ lang, preload = false }: { lang: Lang; preload?: boo
   return (
     <div className="mt-7">
       <div
-        className="relative aspect-[1672/941] w-full overflow-hidden rounded-lg bg-[#172119] shadow-[0_28px_80px_rgba(23,33,25,0.2)]"
+        className="relative aspect-[1672/941] w-full overflow-hidden rounded-lg bg-[#234633] shadow-[0_28px_80px_rgba(35,70,51,0.2)]"
         onMouseLeave={() => {
           setHoveredId(null);
           setHoveredPier(false);
@@ -131,13 +131,13 @@ export function CampusMap({ lang, preload = false }: { lang: Lang; preload?: boo
         />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/35 to-transparent" />
 
-        <div className="pointer-events-none absolute left-3 top-3 z-20 hidden items-center gap-2 rounded-full border border-white/25 bg-[#172119]/72 px-3 py-2 text-xs font-semibold text-white shadow-lg backdrop-blur-md sm:flex">
-          <MousePointer2 className="h-4 w-4 text-[#dfe8c7]" />
+        <div className="pointer-events-none absolute left-3 top-3 z-20 hidden items-center gap-2 rounded-full border border-white/25 bg-[#234633]/72 px-3 py-2 text-xs font-semibold text-white shadow-lg backdrop-blur-md sm:flex">
+          <MousePointer2 className="h-4 w-4 text-[#f1ddb2]" />
           {t.desktopHint}
         </div>
 
-        <div className="pointer-events-none absolute left-3 top-3 z-20 flex items-center gap-2 rounded-full border border-white/25 bg-[#172119]/72 px-3 py-2 text-[11px] font-semibold text-white shadow-lg backdrop-blur-md sm:hidden">
-          <Hand className="h-4 w-4 text-[#dfe8c7]" />
+        <div className="pointer-events-none absolute left-3 top-3 z-20 flex items-center gap-2 rounded-full border border-white/25 bg-[#234633]/72 px-3 py-2 text-[11px] font-semibold text-white shadow-lg backdrop-blur-md sm:hidden">
+          <Hand className="h-4 w-4 text-[#f1ddb2]" />
           {t.mobileHint}
         </div>
 
@@ -191,7 +191,7 @@ export function CampusMap({ lang, preload = false }: { lang: Lang; preload?: boo
                   <circle
                     cx={geometry.marker.x}
                     cy={geometry.marker.y}
-                    fill={isActive ? "#c7d8a7" : "rgba(23,33,25,0.82)"}
+                    fill={isActive ? "#d6b568" : "rgba(35,70,51,0.82)"}
                     r={isActive ? 25 : 21}
                     stroke="rgba(255,255,255,0.8)"
                     strokeWidth="2"
@@ -199,7 +199,7 @@ export function CampusMap({ lang, preload = false }: { lang: Lang; preload?: boo
                   />
                   <text
                     dominantBaseline="central"
-                    fill={isActive ? "#172119" : "white"}
+                    fill={isActive ? "#234633" : "white"}
                     fontSize="18"
                     fontWeight="700"
                     textAnchor="middle"
@@ -260,7 +260,7 @@ export function CampusMap({ lang, preload = false }: { lang: Lang; preload?: boo
         ) : activeBuilding ? (
           <BuildingCard building={activeBuilding} lang={lang} />
         ) : (
-          <p className="rounded-lg border border-black/10 bg-white/65 px-4 py-3 text-sm leading-6 text-[#586158]">
+          <p className="rounded-lg border border-black/10 bg-white/65 px-4 py-3 text-sm leading-6 text-[#627267]">
             {t.mobileHint}
           </p>
         )}
@@ -274,10 +274,10 @@ export function CampusMap({ lang, preload = false }: { lang: Lang; preload?: boo
           return (
             <button
               aria-pressed={isActive}
-              className={`flex min-h-14 items-center gap-3 rounded-lg border px-3 py-2 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3f6d4e] focus-visible:ring-offset-2 ${
+              className={`flex min-h-14 items-center gap-3 rounded-lg border px-3 py-2 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3f7654] focus-visible:ring-offset-2 ${
                 isActive
-                  ? "border-[#3f6d4e] bg-[#172119] text-white shadow-md"
-                  : "border-black/10 bg-white/65 text-[#172119] hover:bg-white"
+                  ? "border-[#3f7654] bg-[#234633] text-white shadow-md"
+                  : "border-black/10 bg-white/65 text-[#234633] hover:bg-white"
               }`}
               key={building.id}
               onBlur={() => setHoveredId(null)}
@@ -287,7 +287,7 @@ export function CampusMap({ lang, preload = false }: { lang: Lang; preload?: boo
               onMouseLeave={() => setHoveredId(null)}
               type="button"
             >
-              <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-xs font-bold ${isActive ? "bg-[#c7d8a7] text-[#172119]" : "bg-[#e5ead8] text-[#31523b]"}`}>
+              <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-xs font-bold ${isActive ? "bg-[#d6b568] text-[#234633]" : "bg-[#f1ddb2] text-[#2f5f43]"}`}>
                 {String(index + 1).padStart(2, "0")}
               </span>
               <span className="min-w-0">

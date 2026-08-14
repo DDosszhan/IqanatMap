@@ -34,10 +34,10 @@ export function FacultyPage({ lang }: { lang: Lang }) {
   }, [locale, query]);
 
   return (
-    <main className="min-h-screen bg-[#f7f4ee] text-[#172119]">
+    <main className="ornamented-page min-h-screen bg-[#f7f4ee] text-[#234633]">
       <SiteHeader lang={lang} path="/teachers/faculty" />
       <section className="mx-auto w-full max-w-6xl px-5 py-10 sm:px-8 lg:px-10">
-        <p className="text-sm font-semibold uppercase text-[#3f6d4e]">{t.eyebrow}</p>
+        <p className="text-sm font-semibold uppercase text-[#3f7654]">{t.eyebrow}</p>
         <div className="mt-4 grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-end">
           <h1 className="max-w-3xl text-5xl font-semibold leading-[0.96] sm:text-7xl">{t.title}</h1>
           <label className="relative block rounded-lg border border-black/10 bg-white/70 p-2" htmlFor="faculty-search">
@@ -48,7 +48,7 @@ export function FacultyPage({ lang }: { lang: Lang }) {
             />
             <input
               autoComplete="off"
-              className="h-12 w-full rounded-md bg-[#f7f4ee] pl-11 pr-11 text-sm text-[#172119] outline-none ring-[#3f6d4e] placeholder:text-[#697168] focus:ring-2"
+              className="h-12 w-full rounded-md bg-[#f7f4ee] pl-11 pr-11 text-sm text-[#234633] outline-none ring-[#3f7654] placeholder:text-[#697168] focus:ring-2"
               id="faculty-search"
               onChange={(event) => setQuery(event.target.value)}
               placeholder={t.search}
@@ -58,7 +58,7 @@ export function FacultyPage({ lang }: { lang: Lang }) {
             {query ? (
               <button
                 aria-label={clearLabels[lang]}
-                className="absolute right-4 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full text-[#586158] transition hover:bg-black/5 hover:text-[#172119]"
+                className="absolute right-4 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full text-[#627267] transition hover:bg-black/5 hover:text-[#234633]"
                 onClick={() => setQuery("")}
                 title={clearLabels[lang]}
                 type="button"
@@ -78,12 +78,12 @@ export function FacultyPage({ lang }: { lang: Lang }) {
           filteredTeachers.map(([name, role, building, room], index) => (
             <article className="overflow-hidden rounded-lg border border-black/10 bg-white/75" key={`${role}-${index}`}>
               <div className="flex aspect-[4/3] items-center justify-center bg-[#dfe7d2]">
-                <UserRound className="h-16 w-16 text-[#3f6d4e]" />
+                <UserRound className="h-16 w-16 text-[#3f7654]" />
               </div>
               <div className="p-5">
                 <h2 className="text-xl font-semibold">{name}</h2>
-                <p className="mt-1 text-sm font-medium text-[#3f6d4e]">{role}</p>
-                <div className="mt-5 grid gap-3 text-sm text-[#586158]">
+                <p className="mt-1 text-sm font-medium text-[#3f7654]">{role}</p>
+                <div className="mt-5 grid gap-3 text-sm text-[#627267]">
                   <p className="flex items-center gap-2">
                     <MapPin className="h-4 w-4" />
                     {building}, {room}
@@ -99,7 +99,7 @@ export function FacultyPage({ lang }: { lang: Lang }) {
         ) : (
           <div className="py-16 text-center md:col-span-2 lg:col-span-3">
             <Search className="mx-auto h-8 w-8 text-[#8a938a]" />
-            <p className="mt-4 text-base font-semibold text-[#465047]">{t.noResults}</p>
+            <p className="mt-4 text-base font-semibold text-[#506255]">{t.noResults}</p>
           </div>
         )}
       </section>

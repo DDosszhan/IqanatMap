@@ -2,7 +2,7 @@
 
 :root {
   --background: #f7f4ee;
-  --foreground: #172119;
+  --foreground: #234633;
 }
 
 * {
@@ -27,6 +27,75 @@ a {
 }
 
 ::selection {
-  background: #c7d8a7;
-  color: #172119;
+  background: #d6b568;
+  color: #234633;
+}
+
+.ornamented-page {
+  position: relative;
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, rgba(255, 251, 242, 0.92), rgba(247, 244, 238, 0.98) 42%, rgba(247, 244, 238, 1));
+}
+
+.ornamented-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("/oyu-wide-transparent.png"), url("/oyu-vertical-transparent.png");
+  background-position: center -130px, calc(100% + 105px) 54vh;
+  background-repeat: no-repeat;
+  background-size: min(920px, 88vw) auto, min(360px, 34vw) auto;
+  opacity: 0.12;
+}
+
+.ornamented-page > * {
+  position: relative;
+  z-index: 1;
+}
+
+.dark-ornament {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.dark-ornament::before {
+  content: "";
+  position: absolute;
+  inset: -120px -80px auto -80px;
+  height: 560px;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("/oyu-wide-transparent.png");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: min(980px, 105vw) auto;
+  opacity: 0.08;
+}
+
+.dark-ornament > * {
+  position: relative;
+  z-index: 1;
+}
+
+.gold-wash {
+  background:
+    linear-gradient(135deg, rgba(214, 181, 104, 0.2), rgba(255, 255, 255, 0.58) 42%, rgba(63, 118, 84, 0.1));
+}
+
+@media (max-width: 640px) {
+  .ornamented-page::before {
+    background-position: center -72px, calc(100% + 145px) 64vh;
+    background-size: 640px auto, 320px auto;
+    opacity: 0.09;
+  }
+
+  .dark-ornament::before {
+    inset: -70px -160px auto -160px;
+    height: 360px;
+    opacity: 0.06;
+  }
 }
