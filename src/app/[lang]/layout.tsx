@@ -4,9 +4,9 @@ import "../globals.css";
 import { isLang, languages } from "@/lib/i18n";
 
 const descriptions = {
-  kk: "IQanat мектеп қауымдастығына арналған интерактивті анықтамалық.",
-  ru: "Интерактивный справочник для школьного сообщества IQanat.",
-  en: "An interactive guide for the IQanat school community.",
+  kk: "IQanat мектеп қауымдастығының құндылықтары, күнтізбесі және кампус картасы.",
+  ru: "Ценности, календарь и карта кампуса школьного сообщества IQanat.",
+  en: "Values, calendar, and campus map for the IQanat school community.",
 } as const;
 
 export function generateStaticParams() {

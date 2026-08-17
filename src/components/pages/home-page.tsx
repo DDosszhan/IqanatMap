@@ -90,6 +90,25 @@ export function HomePage({ lang }: { lang: Lang }) {
                 {t.pages.map(([href, title, text], index) => {
                   const Icon = pageIcons[index];
 
+                  if (href === "/teachers/faculty") {
+                    return (
+                      <article
+                        aria-disabled="true"
+                        className="rounded-[1.35rem] border border-black/10 bg-[#fdfbf7] p-4 opacity-85"
+                        key={href}
+                      >
+                        <Icon className="h-5 w-5 text-[#3f7654]" />
+                        <div className="mt-5 flex flex-wrap items-center gap-2">
+                          <h3 className="text-base font-semibold">{title}</h3>
+                          <span className="rounded-full border border-[#d6b568]/35 bg-[#fff6df] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#8a6a22]">
+                            {copy[lang].nav.inProgress}
+                          </span>
+                        </div>
+                        <p className="mt-2 text-xs leading-5 text-[#627267]">{text}</p>
+                      </article>
+                    );
+                  }
+
                   return (
                     <Link
                       className="group rounded-[1.35rem] border border-black/10 bg-[#fdfbf7] p-4 transition hover:-translate-y-0.5 hover:bg-white hover:shadow-lg"

@@ -22,19 +22,20 @@ export const copy = {
       map: "Карта",
       ordas: "Ордалар",
       language: "Тіл",
+      inProgress: "Жасалуда",
     },
     home: {
-      eyebrow: "IQanat цифрлық анықтамалығы",
+      eyebrow: "IQanat құндылықтары",
       title: "Бізді қосқан IQanat!",
       intro:
-        "Мектеп қауымдастығына арналған цифрлық анықтамалық: бөлімдер, кампус картасы, ұстаздар туралы мәлімет және академиялық күнтізбе.",
+        "Мектеп қауымдастығын біріктіретін бағыттар: құндылықтар, академиялық күнтізбе, ордалар және кампус картасы.",
       quick: "Жылдам кіру",
-      quickTitle: "Бір анықтамалық, бірнеше бағыт",
+      quickTitle: "Құндылықтар, бір ортақ бағыт",
       quickText:
-        "Мұғалім, оқушы, ата-ана және қонақ өзіне керек маршрутты, кестені, адамды және орынды таңдаған тілінде көреді.",
+        "IQanat құндылықтары оқушы, мұғалім, ата-ана және қонақ үшін ортақ мәдениетті көрсетеді.",
       pages: [
         ["/teachers/calendar", "Академиялық күнтізбе", "Тоқсандар, бағалау кезеңдері және маңызды оқу күндері."],
-        ["/teachers/faculty", "Ұстаздар", "Пәні, кабинеті, ғимараты және байланысы көрсетілген көрнекі анықтамалық."],
+        ["/teachers/faculty", "Ұстаздар", "Бұл бөлім әзірленіп жатыр. Фотосуреттер мен деректер сақталады."],
       ],
       values: {
         eyebrow: "IQanat құндылықтары",
@@ -73,19 +74,20 @@ export const copy = {
       map: "Карта",
       ordas: "Орды",
       language: "Язык",
+      inProgress: "В процессе",
     },
     home: {
-      eyebrow: "Цифровой справочник IQanat",
+      eyebrow: "Ценности IQanat",
       title: "Бізді қосқан IQanat!",
       intro:
-        "Цифровой справочник для школьного сообщества: разделы, карта кампуса, сведения об учителях и академический календарь.",
+        "Пространство школьного сообщества: ценности, академический календарь, орды и карта кампуса.",
       quick: "Быстрый доступ",
-      quickTitle: "Один справочник, несколько направлений",
+      quickTitle: "Ценности, один общий ориентир",
       quickText:
-        "Учитель, ученик, родитель и гость видят нужный маршрут, расписание, человека и место на выбранном языке.",
+        "Ценности IQanat задают общий язык для учеников, учителей, родителей и гостей школы.",
       pages: [
         ["/teachers/calendar", "Академический календарь", "Четверти, периоды оценивания и важные учебные даты."],
-        ["/teachers/faculty", "Учителя", "Наглядный справочник с предметом, кабинетом, зданием и контактами."],
+        ["/teachers/faculty", "Учителя", "Раздел готовится. Фотографии и данные остаются сохранены."],
       ],
       values: {
         eyebrow: "Ценности IQanat",
@@ -124,19 +126,20 @@ export const copy = {
       map: "Map",
       ordas: "Ordas",
       language: "Language",
+      inProgress: "In progress",
     },
     home: {
-      eyebrow: "IQanat digital guide",
+      eyebrow: "IQanat values",
       title: "Bizdi qosqan IQanat!",
       intro:
-        "A digital guide for the school community with key sections, a campus map, faculty information, and the academic calendar.",
+        "A school community space with values, the academic calendar, ordas, and the campus map.",
       quick: "Quick access",
-      quickTitle: "One guide, several directions",
+      quickTitle: "Values, one shared direction",
       quickText:
-        "Teachers, students, parents, and guests can find the route, schedule, person, or place they need in their chosen language.",
+        "IQanat values give students, teachers, parents, and guests a shared cultural compass.",
       pages: [
         ["/teachers/calendar", "Academic calendar", "Terms, assessment periods, and important academic dates."],
-        ["/teachers/faculty", "Faculty", "A visual directory with subjects, rooms, buildings, and contact details."],
+        ["/teachers/faculty", "Faculty", "This section is in progress. Photos and data remain saved."],
       ],
       values: {
         eyebrow: "IQanat values",

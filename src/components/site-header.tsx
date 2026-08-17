@@ -27,10 +27,18 @@ const menuLabels: Record<Lang, { open: string; close: string }> = {
   en: { open: "Open menu", close: "Close menu" },
 };
 
+type NavItem = {
+  href: string;
+  label: string;
+  icon: typeof GraduationCap;
+  active: boolean;
+  disabled?: boolean;
+};
+
 export function SiteHeader({ lang, path = "/" }: { lang: Lang; path?: string }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const t = copy[lang].nav;
-  const navItems = [
+  const navItems: NavItem[] = [
     { href: languagePath(lang), label: t.home, icon: GraduationCap, active: path === "/" },
     {
       href: languagePath(lang, "/teachers/calendar"),
@@ -39,10 +47,11 @@ export function SiteHeader({ lang, path = "/" }: { lang: Lang; path?: string }) 
       active: path === "/teachers/calendar",
     },
     {
-      href: languagePath(lang, "/teachers/faculty"),
+      href: "#",
       label: t.faculty,
       icon: Images,
-      active: path === "/teachers/faculty",
+      active: false,
+      disabled: true,
     },
     {
       href: `${languagePath(lang)}#sections`,
@@ -110,6 +119,22 @@ export function SiteHeader({ lang, path = "/" }: { lang: Lang; path?: string }) 
             {navItems.map((item) => {
               const Icon = item.icon;
 
+              if (item.disabled) {
+                return (
+                  <span
+                    aria-disabled="true"
+                    className="flex min-h-11 min-w-fit cursor-default items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-[#7b857c] md:min-h-0 md:rounded-full"
+                    key={item.label}
+                  >
+                    <Icon className="h-4 w-4 shrink-0 text-[#8aa08f]" />
+                    <span>{item.label}</span>
+                    <span className="ml-auto rounded-full border border-[#d6b568]/35 bg-[#fff6df] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#8a6a22] md:ml-0">
+                      {t.inProgress}
+                    </span>
+                  </span>
+                );
+              }
+
               return (
                 <Link
                   aria-current={item.active ? "page" : undefined}
@@ -151,6 +176,22 @@ export function SiteHeader({ lang, path = "/" }: { lang: Lang; path?: string }) 
           <nav className="mt-2 grid grid-cols-2 gap-1 border-t border-black/8 pt-2 md:hidden">
             {navItems.map((item) => {
               const Icon = item.icon;
+
+              if (item.disabled) {
+                return (
+                  <span
+                    aria-disabled="true"
+                    className="flex min-h-11 min-w-fit cursor-default items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-[#7b857c] md:min-h-0 md:rounded-full"
+                    key={item.label}
+                  >
+                    <Icon className="h-4 w-4 shrink-0 text-[#8aa08f]" />
+                    <span>{item.label}</span>
+                    <span className="ml-auto rounded-full border border-[#d6b568]/35 bg-[#fff6df] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#8a6a22] md:ml-0">
+                      {t.inProgress}
+                    </span>
+                  </span>
+                );
+              }
 
               return (
                 <Link
