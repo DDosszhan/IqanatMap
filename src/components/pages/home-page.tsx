@@ -1,12 +1,9 @@
 import {
   BookOpenCheck,
-  CalendarDays,
   Car,
   CigaretteOff,
   HandHeart,
   HeartHandshake,
-  Images,
-  Map,
   PawPrint,
   ReceiptText,
   Scale,
@@ -23,10 +20,9 @@ import Link from "next/link";
 import { CampusMap } from "@/components/campus-map";
 import { SiteHeader } from "@/components/site-header";
 import { campusMapCopy } from "@/lib/campus-map-data";
-import { copy, languagePath, type Lang } from "@/lib/i18n";
+import { copy, type Lang } from "@/lib/i18n";
 import { teacherHouseCopy } from "@/lib/teacher-house-i18n";
 
-const pageIcons = [CalendarDays, Images];
 const valueIcons = [Scale, HandHeart, BookOpenCheck, Trophy];
 const ruleIcons = {
   internet: ShieldCheck,
@@ -87,97 +83,31 @@ export function HomePage({ lang }: { lang: Lang }) {
                 </p>
               </div>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                {t.pages.map(([href, title, text], index) => {
-                  const Icon = pageIcons[index];
-
-                  if (href === "/teachers/faculty") {
-                    return (
-                      <article
-                        aria-disabled="true"
-                        className="rounded-[1.35rem] border border-black/10 bg-[#fdfbf7] p-4 opacity-85"
-                        key={href}
-                      >
-                        <Icon className="h-5 w-5 text-[#3f7654]" />
-                        <div className="mt-5 flex flex-wrap items-center gap-2">
-                          <h3 className="text-base font-semibold">{title}</h3>
-                          <span className="rounded-full border border-[#d6b568]/35 bg-[#fff6df] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#8a6a22]">
-                            {copy[lang].nav.inProgress}
-                          </span>
-                        </div>
-                        <p className="mt-2 text-xs leading-5 text-[#627267]">{text}</p>
-                      </article>
-                    );
-                  }
+                {t.values.items.map(([title, text], index) => {
+                  const Icon = valueIcons[index];
 
                   return (
-                    <Link
-                      className="group rounded-[1.35rem] border border-black/10 bg-[#fdfbf7] p-4 transition hover:-translate-y-0.5 hover:bg-white hover:shadow-lg"
-                      href={languagePath(lang, href)}
-                      key={href}
+                    <article
+                      className="min-h-[150px] rounded-[1.35rem] border border-black/10 bg-[#fdfbf7] p-4 shadow-sm"
+                      key={title}
                     >
-                      <Icon className="h-5 w-5 text-[#3f7654]" />
-                      <h3 className="mt-5 text-base font-semibold">{title}</h3>
+                      <div className="flex items-center justify-between gap-3">
+                        <Icon className="h-5 w-5 text-[#3f7654]" />
+                        <span className="text-xs font-semibold text-[#d6b568]">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                      </div>
+                      <h3 className="mt-5 text-base font-semibold leading-tight">{title}</h3>
                       <p className="mt-2 text-xs leading-5 text-[#627267]">{text}</p>
-                    </Link>
+                    </article>
                   );
                 })}
-                <Link
-                  className="group rounded-[1.35rem] border border-black/10 bg-[#fff6df] p-4 transition hover:-translate-y-0.5 hover:bg-white hover:shadow-lg"
-                  href={languagePath(lang, "/map")}
-                >
-                  <Map className="h-5 w-5 text-[#3f7654]" />
-                  <h3 className="mt-5 text-base font-semibold">{campus.navTitle}</h3>
-                  <p className="mt-2 text-xs leading-5 text-[#627267]">{campus.intro}</p>
-                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-
-      <section className="relative mx-auto w-full max-w-6xl px-5 pb-16 sm:px-8 lg:px-10" aria-labelledby="values-title">
-        <div className="mb-7 grid gap-4 lg:grid-cols-[0.8fr_1fr] lg:items-end">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#3f7654]">
-              {t.values.eyebrow}
-            </p>
-            <h2 className="mt-3 max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl" id="values-title">
-              {t.values.title}
-            </h2>
-          </div>
-          <p className="max-w-2xl text-base leading-7 text-[#627267] lg:justify-self-end">
-            {t.values.intro}
-          </p>
-        </div>
-
-        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-          {t.values.items.map(([title, text], index) => {
-            const Icon = valueIcons[index];
-
-            return (
-              <article
-                className="group relative min-h-64 overflow-hidden rounded-2xl border border-[#d6b568]/28 bg-white/76 p-5 shadow-[0_20px_70px_rgba(35,70,51,0.1)] backdrop-blur transition hover:-translate-y-0.5 hover:border-[#d6b568]/55 hover:bg-white"
-                key={title}
-              >
-                <div className="absolute right-4 top-3 text-6xl font-semibold leading-none text-[#d6b568]/18">
-                  {String(index + 1).padStart(2, "0")}
-                </div>
-                <div className="relative flex h-12 w-12 items-center justify-center rounded-full bg-[#234633] text-[#d6b568] shadow-[inset_0_1px_0_rgba(255,255,255,0.18)]">
-                  <Icon className="h-6 w-6" />
-                </div>
-                <h3 className="relative mt-7 text-xl font-semibold leading-tight text-[#234633]">
-                  {title}
-                </h3>
-                <p className="relative mt-4 text-sm leading-6 text-[#627267]">
-                  {text}
-                </p>
-                <div className="absolute inset-x-5 bottom-0 h-1 rounded-t-full bg-[#d6b568]/70 transition group-hover:bg-[#d6b568]" />
-              </article>
-            );
-          })}
-        </div>
-      </section>
       <section className="dark-ornament bg-[#234633] px-5 py-12 text-white sm:px-8 lg:px-10" id="sections">
         <div className="mx-auto grid w-full max-w-7xl gap-7 lg:grid-cols-[1.35fr_0.65fr] lg:items-center">
           <div className="overflow-hidden rounded-[2rem] border border-white/12 bg-white/8 shadow-[0_28px_90px_rgba(16,33,24,0.28)] lg:-ml-6">

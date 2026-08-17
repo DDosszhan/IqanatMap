@@ -32,7 +32,7 @@ const monthDays = [15, 30, 31, 30, 31, 31, 28, 31, 30, 31, 11];
 
 export const calendarCopy: Record<Lang, CalendarCopy> = {
   kk: {
-    eyebrow: "Мұғалімдерге арналған анықтамалық",
+    eyebrow: "Академиялық күнтізбе",
     title: "Академиялық күнтізбе",
     current: "Ағымдағы оқу жылы",
     intro: "Мұғалімдерге арналған қысқа жұмыс күнтізбесі.",
@@ -86,7 +86,7 @@ export const calendarCopy: Record<Lang, CalendarCopy> = {
     ],
   },
   ru: {
-    eyebrow: "Справочник для учителей",
+    eyebrow: "Академический календарь",
     title: "Академический календарь",
     current: "Текущий учебный год",
     intro: "Краткий рабочий календарь для учителей.",
@@ -140,7 +140,7 @@ export const calendarCopy: Record<Lang, CalendarCopy> = {
     ],
   },
   en: {
-    eyebrow: "Teacher handbook",
+    eyebrow: "Academic calendar",
     title: "Academic calendar",
     current: "Current academic year",
     intro: "A concise working calendar for teachers.",

@@ -13,7 +13,7 @@ export const teacherHouseCopy = {
     rulesTitle: "Teacher House ішінде сақталатын негізгі тәртіп",
     costsTitle: "Коммуналдық шығындар",
     costsNote:
-      "Төлемді жалақы түскеннен кейін бірден жатақхана меңгерушісіне тапсыру қажет. Жауапты қызметкердің байланысы анықтамалықтағы «Пайдалы байланыстар» бөлімінде көрсетіледі.",
+      "Төлемді жалақы түскеннен кейін бірден жатақхана меңгерушісіне тапсыру қажет. Жауапты қызметкердің байланысын әкімшіліктен нақтылауға болады.",
     costs: [
       ["1 бөлмелі пәтер", "6 000 ₸"],
       ["2 бөлмелі пәтер", "12 000 ₸"],
@@ -77,7 +77,7 @@ export const teacherHouseCopy = {
   },
   ru: {
     jump: "Дом учителей",
-    eyebrow: "Справочник по Teachers House",
+    eyebrow: "Правила Teachers House",
     title: "Teacher House: общее пространство для сотрудников школы",
     intro:
       "Teacher House - общее жилое пространство для сотрудников школы. Здесь собраны основные правила, чтобы всем было комфортно, безопасно и спокойно.",
@@ -87,7 +87,7 @@ export const teacherHouseCopy = {
     rulesTitle: "Что важно соблюдать в Teacher House",
     costsTitle: "Коммунальные расходы",
     costsNote:
-      "Оплату необходимо произвести сразу после поступления заработной платы заведующему общежитием. Контакты ответственного сотрудника можно найти в разделе «Полезные контакты» справочника.",
+      "Оплату необходимо произвести сразу после поступления заработной платы заведующему общежитием. Контакты ответственного сотрудника можно уточнить у администрации.",
     costs: [
       ["1-комнатная квартира", "6 000 ₸"],
       ["2-комнатная квартира", "12 000 ₸"],
@@ -161,7 +161,7 @@ export const teacherHouseCopy = {
     rulesTitle: "What to follow inside Teachers House",
     costsTitle: "Utility costs",
     costsNote:
-      "Payment should be made to the residence manager right after salary payment. The responsible staff member's contact details are listed in the Useful contacts section of the handbook.",
+      "Payment should be made to the residence manager right after salary payment. The responsible staff member's contact details can be confirmed with administration.",
     costs: [
       ["1-room apartment", "6 000 ₸"],
       ["2-room apartment", "12 000 ₸"],

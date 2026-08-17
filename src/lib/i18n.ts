@@ -57,7 +57,7 @@ export const copy = {
       membersLabel: "Оқушылар қауымдастығы",
     },
     faculty: {
-      eyebrow: "Ұстаздар анықтамалығы",
+      eyebrow: "Ұстаздар командасы",
       title: "Ұстаздар, міндеттер, кабинеттер және байланыстар",
       search: "Аты, пәні, ғимараты немесе кабинеті бойынша іздеу",
       noResults: "Сұрауыңыз бойынша ешкім табылмады",
@@ -109,7 +109,7 @@ export const copy = {
       membersLabel: "Сообщество учеников",
     },
     faculty: {
-      eyebrow: "Справочник учителей",
+      eyebrow: "Команда учителей",
       title: "Учителя, роли, кабинеты и контакты",
       search: "Поиск по имени, предмету, зданию или кабинету",
       noResults: "По вашему запросу никто не найден",
@@ -161,7 +161,7 @@ export const copy = {
       membersLabel: "Student community",
     },
     faculty: {
-      eyebrow: "Faculty directory",
+      eyebrow: "Faculty team",
       title: "Faculty, roles, rooms, and contacts",
       search: "Search by name, subject, building, or room",
       noResults: "No faculty members match your search",
